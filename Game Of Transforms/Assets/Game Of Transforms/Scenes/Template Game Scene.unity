@@ -1192,18 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89ce2f5db0227e40ad3eac809876556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 20
-  cartesianAxisMaterial: {fileID: 2100000, guid: 8df67e0f710e02d4193eee57fbe025d2,
-    type: 2}
-  cartesianAxisWidth: 0.5
-  cartesianLinesMaterial: {fileID: 2100000, guid: c002771f9bb774c42b82e22213b63877,
-    type: 2}
-  cartesianLinesWidth: 0.05
-  linesOffset: 1
-  labelOffset: 5
-  labelPrefab: {fileID: 4467099607491526508, guid: 632e970ac6fa3634086edb177e9813ae,
-    type: 3}
-  labelDistance: 1
+  attributes: {fileID: 11400000, guid: b482b0bdac6b6ac4f817366eb6a1e58d, type: 2}
 --- !u!4 &925567518
 Transform:
   m_ObjectHideFlags: 0
