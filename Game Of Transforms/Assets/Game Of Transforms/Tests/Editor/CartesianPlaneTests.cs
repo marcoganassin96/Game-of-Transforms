@@ -5,11 +5,20 @@ namespace GameOfTransforms.Tests
 {
     internal class CartesianPlaneTests
     {
-        [Test]
-        public void Throws_Exception_On_Cartesian_Plane_With_Size_Not_Greater_Than_0()
+        [TestFixture]
+        internal class The_Constructor : CartesianPlaneTests
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => new CartesianPlaneController(0));
-            Assert.Throws<ArgumentOutOfRangeException>(() => new CartesianPlaneController(-1));
+            #region _0_Throws_Exception_On_Cartesian_Plane_With_Size_Not_Greater_Than_0
+
+            [TestCase(0)]
+            [TestCase(-1)]
+            [TestCase(-23)]
+            public void _0_Throws_Exception_On_Cartesian_Plane_With_Size_Not_Greater_Than_0(int size)
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => new CartesianPlaneController(size));
+            }
+
+            #endregion
         }
     }
 }
