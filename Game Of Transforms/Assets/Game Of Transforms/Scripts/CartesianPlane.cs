@@ -14,8 +14,6 @@ namespace GameOfTransforms
         #endregion
 
         private CartesianPlaneController cartesianPlane = default;
-        private CartesianAxis[] cartesianAxis = default;
-        private CartesianLines[] cartesianLines = default;
 
         private Vector3 origin = default; 
 
@@ -23,16 +21,6 @@ namespace GameOfTransforms
         {
             origin = transform.position;
             cartesianPlane = new CartesianPlaneController(attributes.Size);
-            cartesianAxis = new CartesianAxis[]
-            {
-                new CartesianAxis("Horizontal Axis", Vector3.right),
-                new CartesianAxis("Vertical Axis", Vector3.up)
-            };
-            cartesianLines = new CartesianLines[]
-            {
-                new CartesianLines(Vector3.right, Vector3.up),
-                new CartesianLines(Vector3.up, Vector3.right)
-            };
             DrawCartesianPlane();
         }
 
@@ -40,21 +28,24 @@ namespace GameOfTransforms
 
         private void DrawCartesianPlane()
         {
-            DrawCartesianLines(transform, cartesianLines);
-            DrawCartesianAxis(transform, cartesianAxis);
-            DrawCartesianLabels(transform, cartesianLines);
+            DrawCartesianLines(transform, Vector3.right, Vector3.up);
+            DrawCartesianLines(transform, Vector3.up, Vector3.right);
+
+            DrawCartesianAxis(transform, "Axis X", Vector3.right);
+            DrawCartesianAxis(transform, "Axis Y", Vector3.up);
+
+            DrawCartesianLabels(transform, Vector3.right, Vector3.up);
+            DrawCartesianLabels(transform, Vector3.up, Vector3.right);
         }
 
-        private void DrawCartesianAxis(Transform cartesianPlaneTransform, CartesianAxis[] cartesianAxis)
+        private void DrawCartesianAxis(Transform cartesianPlaneTransform, string name, Vector3 offsetDirection)
         {
-            foreach (CartesianAxis axis in cartesianAxis )
-            {
-                Transform axisTransform = new GameObject(axis.name).transform;
+                Transform axisTransform = new GameObject(name).transform;
                 axisTransform.SetParent(cartesianPlaneTransform);
                 axisTransform.position = transform.position;
                 LineRenderer axisLineRenderer = axisTransform.gameObject.AddComponent<LineRenderer>();
-                Vector3 axisStartingPoint = origin - axis.offsetDirection * attributes.Size;
-                Vector3 axisEndingPoint = origin + axis.offsetDirection * attributes.Size;
+                Vector3 axisStartingPoint = origin - offsetDirection * attributes.Size;
+                Vector3 axisEndingPoint = origin + offsetDirection * attributes.Size;
                 Vector3[] axisPoints = new Vector3[] {
                     axisStartingPoint,
                     axisEndingPoint
@@ -62,56 +53,48 @@ namespace GameOfTransforms
                 axisLineRenderer.material = attributes.CartesianAxisMaterial;
                 axisLineRenderer.startWidth = axisLineRenderer.endWidth = attributes.CartesianAxisWidth;
                 axisLineRenderer.SetPositions(axisPoints);
-            }
         }
 
-        private void DrawCartesianLines(Transform cartesianPlaneTransform, CartesianLines[] cartesianLines)
+        private void DrawCartesianLines(Transform cartesianPlaneTransform, Vector3 offsetDirection, Vector3 ortogonalDirection)
         {
             int index = -( ( attributes.Size - 1 ) / attributes.LinesOffset ) * attributes.LinesOffset;
-            foreach (var cartesianLine in cartesianLines )
+            for (int i = index; i < attributes.Size; i += attributes.LinesOffset)
             {
-                for ( int i = index; i < attributes.Size; i += attributes.LinesOffset )
+                if (i != 0)
                 {
-                    if ( i != 0 )
-                    {
-                        Transform lineTransform = new GameObject("Line " + i).transform;
-                        lineTransform.SetParent(cartesianPlaneTransform);
-                        Vector3 linePosition = lineTransform.position = origin + cartesianLine.offsetDirection * i;
-                        LineRenderer lineLineRenderer = lineTransform.gameObject.AddComponent<LineRenderer>();
-                        Vector3 axisStartingPoint = linePosition - cartesianLine.ortogonalDirection * attributes.Size;
-                        Vector3 axisEndingPoint = linePosition + cartesianLine.ortogonalDirection * attributes.Size;
-                        Vector3[] axisPoints = new Vector3[] {
+                    Transform lineTransform = new GameObject("Line " + i).transform;
+                    lineTransform.SetParent(cartesianPlaneTransform);
+                    Vector3 linePosition = lineTransform.position = origin + offsetDirection * i;
+                    LineRenderer lineLineRenderer = lineTransform.gameObject.AddComponent<LineRenderer>();
+                    Vector3 axisStartingPoint = linePosition - ortogonalDirection * attributes.Size;
+                    Vector3 axisEndingPoint = linePosition + ortogonalDirection * attributes.Size;
+                    Vector3[] axisPoints = new Vector3[] {
                             axisStartingPoint,
                             axisEndingPoint
                         };
-                        lineLineRenderer.material = attributes.CartesianLinesMaterial;
-                        lineLineRenderer.startWidth = lineLineRenderer.endWidth = attributes.CartesianLinesWidth;
-                        lineLineRenderer.SetPositions(axisPoints);
-                    }
+                    lineLineRenderer.material = attributes.CartesianLinesMaterial;
+                    lineLineRenderer.startWidth = lineLineRenderer.endWidth = attributes.CartesianLinesWidth;
+                    lineLineRenderer.SetPositions(axisPoints);
                 }
             }
         }
 
-        private void DrawCartesianLabels(Transform cartesianPlaneTransform, CartesianLines[] cartesianLines)
+        private void DrawCartesianLabels (Transform cartesianPlaneTransform, Vector3 offsetDirection, Vector3 ortogonalDirection)
         {
             int index = -( attributes.Size / attributes.LabelOffset ) * attributes.LabelOffset;
-            foreach ( var cartesianLine in cartesianLines )
+            for (int i = index; i <= attributes.Size; i += attributes.LabelOffset)
             {
-                for ( int i = index; i <= attributes.Size; i += attributes.LabelOffset )
+                if (i != 0)
                 {
-                    if ( i != 0 )
-                    {
-                        GameObject label = Instantiate(attributes.LabelPrefab, cartesianPlaneTransform);
-                        label.name = "Label " + i;
-                        label.transform.position = origin + i * cartesianLine.offsetDirection + cartesianLine.ortogonalDirection * attributes.LabelDistance;
-                        label.GetComponent<Text>().text = i + "";
-                    }
+                    GameObject label = Instantiate(attributes.LabelPrefab, cartesianPlaneTransform);
+                    label.name = "Label " + i;
+                    label.transform.position = origin + i * offsetDirection + ortogonalDirection * attributes.LabelDistance;
+                    label.GetComponent<Text>().text = i + "";
                 }
             }
         }
 
-        #endregion
-                
+        #endregion                
     }
 
     public class CartesianPlaneController
@@ -126,6 +109,5 @@ namespace GameOfTransforms
             }
             this.Size = Size;
         }
-
     }
 }
