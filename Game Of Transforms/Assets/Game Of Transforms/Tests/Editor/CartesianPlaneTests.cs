@@ -9,24 +9,24 @@ namespace GameOfTransforms.Tests
         [TestFixture]
         internal class The_Constructor : CartesianPlaneTests
         {
-            #region _0_Throws_Exception_On_Cartesian_Plane_With_Size_Not_Greater_Than_0
+            #region _0_When_SizeInDataIsNotGreaterThan0_Then_ThrowsArgumentException
 
             [TestCase(0)]
             [TestCase(-1)]
             [TestCase(-23)]
-            public void _0_Throws_Exception_On_Cartesian_Plane_With_Size_Not_Greater_Than_0(int size)
+            public void _0_When_SizeInDataIsNotGreaterThan0_Then_ThrowsArgumentException (int size)
             {
                 Assert.Throws<ArgumentException>(() => new CartesianPlaneLogic(GetCartesianPlaneAttributesMock(size)));
             }
 
             #endregion
 
-            #region _1_Does_Not_Throw_Exception_On_Cartesian_Plane_With_Size_Greater_Than_0
+            #region _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowArgumentException
 
             [TestCase(1)]
             [TestCase(2)]
             [TestCase(20)]
-            public void _1_Does_Not_Throw_Exception_On_Cartesian_Plane_With_Size_Greater_Than_0 (int size)
+            public void _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowArgumentException (int size)
             {
                 Assert.DoesNotThrow(() => new CartesianPlaneLogic(GetCartesianPlaneAttributesMock(size)));
             }
