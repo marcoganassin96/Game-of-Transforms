@@ -1,3 +1,15 @@
-﻿{
-	"name": "GameOfTransforms"
+{
+    "name": "GameOfTransforms",
+    "references": [
+        "Core.GameEvents",
+        "Zenject"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
 }
