@@ -11,7 +11,7 @@ namespace GameOfTransforms.Tests
         [TestFixture]
         internal class CartesianPlaneUnitTestsBase : ZenjectUnitTestFixture
         {
-            protected static ICartesianPlaneData GetCartesianPlaneAttributesMock (int size)
+            protected static ICartesianPlaneData GetCartesianPlaneDataMock (int size)
             {
                 ICartesianPlaneData data = Substitute.For<ICartesianPlaneData>();
                 data.Size.Returns(size);
@@ -38,10 +38,10 @@ namespace GameOfTransforms.Tests
 
             #endregion
 
-            #region _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowArgumentException
-            
+            #region _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowExceptions
+
             [TestCaseSource("_1_testCaseSourceArguments")]
-            public void _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowArgumentException (CartesianPlaneLogicArgs args)
+            public void _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowExceptions (CartesianPlaneLogicArgs args)
             {
                 Assert.DoesNotThrow(() => new CartesianPlaneLogic(args.Data));
             }
@@ -61,7 +61,7 @@ namespace GameOfTransforms.Tests
 
                 public CartesianPlaneLogicArgs(int size)
                 {
-                    Data = GetCartesianPlaneAttributesMock(size);
+                    Data = GetCartesianPlaneDataMock(size);
                 }
 
                 public override string GetArgs ()
