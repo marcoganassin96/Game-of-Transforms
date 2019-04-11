@@ -1,7 +1,9 @@
 {
     "name": "GameOfTransforms.Tests",
     "references": [
-        "GameOfTransforms"
+        "GameOfTransforms",
+        "Zenject-TestFramework",
+        "Core.Args"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"

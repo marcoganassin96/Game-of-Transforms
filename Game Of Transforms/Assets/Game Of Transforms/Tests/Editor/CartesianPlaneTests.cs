@@ -1,44 +1,74 @@
-﻿using NSubstitute;
+﻿using Core.Args;
+using NSubstitute;
 using NUnit.Framework;
 using System;
+using Zenject;
 
 namespace GameOfTransforms.Tests
 {
     internal class CartesianPlaneTests
     {
         [TestFixture]
-        internal class The_Constructor : CartesianPlaneTests
+        internal class CartesianPlaneUnitTestsBase : ZenjectUnitTestFixture
         {
-            #region _0_Throws_Exception_On_Cartesian_Plane_With_Size_Not_Greater_Than_0
-
-            [TestCase(0)]
-            [TestCase(-1)]
-            [TestCase(-23)]
-            public void _0_Throws_Exception_On_Cartesian_Plane_With_Size_Not_Greater_Than_0(int size)
+            protected static ICartesianPlaneData GetCartesianPlaneDataMock (int size)
             {
-                Assert.Throws<ArgumentException>(() => new CartesianPlaneLogic(GetCartesianPlaneAttributesMock(size)));
+                ICartesianPlaneData data = Substitute.For<ICartesianPlaneData>();
+                data.Size.Returns(size);
+                return data;
             }
-
-            #endregion
-
-            #region _1_Does_Not_Throw_Exception_On_Cartesian_Plane_With_Size_Greater_Than_0
-
-            [TestCase(1)]
-            [TestCase(2)]
-            [TestCase(20)]
-            public void _1_Does_Not_Throw_Exception_On_Cartesian_Plane_With_Size_Greater_Than_0 (int size)
-            {
-                Assert.DoesNotThrow(() => new CartesianPlaneLogic(GetCartesianPlaneAttributesMock(size)));
-            }
-
-            #endregion
         }
 
-        private ICartesianPlaneData GetCartesianPlaneAttributesMock(int size)
+        internal class _0_The_Constructor : CartesianPlaneUnitTestsBase
         {
-            ICartesianPlaneData data = Substitute.For<ICartesianPlaneData>();
-            data.Size.Returns(size);
-            return data;
+            #region _0_When_SizeInDataIsNotGreaterThan0_Then_ThrowsArgumentException
+            
+            [TestCaseSource("_0_testCaseSourceArguments")]
+            public void _0_When_SizeInDataIsNotGreaterThan0_Then_ThrowsArgumentException (CartesianPlaneLogicArgs args)
+            {
+                Assert.Throws<ArgumentException>(() => new CartesianPlaneLogic(args.Data));
+            }
+
+            private static readonly object[] _0_testCaseSourceArguments =
+            {
+                new object[] { new CartesianPlaneLogicArgs(0) },
+                new object[] { new CartesianPlaneLogicArgs(-1) },
+                new object[] { new CartesianPlaneLogicArgs(-23) },
+            };
+
+            #endregion
+
+            #region _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowExceptions
+
+            [TestCaseSource("_1_testCaseSourceArguments")]
+            public void _1_When_SizeInDataIsGreaterThan0_Then_DoesNotThrowExceptions (CartesianPlaneLogicArgs args)
+            {
+                Assert.DoesNotThrow(() => new CartesianPlaneLogic(args.Data));
+            }
+
+            private static readonly object[] _1_testCaseSourceArguments =
+            {
+                new object[] { new CartesianPlaneLogicArgs(1) },
+                new object[] { new CartesianPlaneLogicArgs(2) },
+                new object[] { new CartesianPlaneLogicArgs(20) },
+            };
+
+            #endregion
+
+            internal class CartesianPlaneLogicArgs : AArgs
+            {
+                public ICartesianPlaneData Data {get;}
+
+                public CartesianPlaneLogicArgs(int size)
+                {
+                    Data = GetCartesianPlaneDataMock(size);
+                }
+
+                public override string GetArgs ()
+                {                    
+                    return string.Format("size={0}", Data.Size);
+                }
+            }
         }
     }
 }
