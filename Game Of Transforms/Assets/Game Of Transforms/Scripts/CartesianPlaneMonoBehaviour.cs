@@ -1,5 +1,6 @@
 ﻿using Core.GameEvents;
 using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -27,8 +28,9 @@ namespace GameOfTransforms
 
         #endregion
 
-        private void Awake()
+        private IEnumerator Start()
         {
+            yield return null;
             onDrawCartesianPlane.Raise();
         }              
     }
