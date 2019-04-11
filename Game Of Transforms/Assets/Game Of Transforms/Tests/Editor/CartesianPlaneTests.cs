@@ -18,7 +18,7 @@ namespace GameOfTransforms.Tests
             }
         }
 
-        internal class The_Constructor : CartesianPlaneUnitTestsBase
+        internal class _0_The_Constructor : CartesianPlaneUnitTestsBase
         {
             #region _0_When_SizeInDataIsNotGreaterThan0_Then_ThrowsArgumentException
 
