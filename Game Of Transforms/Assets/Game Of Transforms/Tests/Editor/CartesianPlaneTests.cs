@@ -1,13 +1,24 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using System;
+using Zenject;
 
 namespace GameOfTransforms.Tests
 {
     internal class CartesianPlaneTests
     {
         [TestFixture]
-        internal class The_Constructor : CartesianPlaneTests
+        internal class CartesianPlaneUnitTestsBase : ZenjectUnitTestFixture
+        {
+            protected static ICartesianPlaneData GetCartesianPlaneAttributesMock (int size)
+            {
+                ICartesianPlaneData data = Substitute.For<ICartesianPlaneData>();
+                data.Size.Returns(size);
+                return data;
+            }
+        }
+
+        internal class The_Constructor : CartesianPlaneUnitTestsBase
         {
             #region _0_When_SizeInDataIsNotGreaterThan0_Then_ThrowsArgumentException
 
@@ -32,13 +43,6 @@ namespace GameOfTransforms.Tests
             }
 
             #endregion
-        }
-
-        private ICartesianPlaneData GetCartesianPlaneAttributesMock(int size)
-        {
-            ICartesianPlaneData data = Substitute.For<ICartesianPlaneData>();
-            data.Size.Returns(size);
-            return data;
         }
     }
 }
