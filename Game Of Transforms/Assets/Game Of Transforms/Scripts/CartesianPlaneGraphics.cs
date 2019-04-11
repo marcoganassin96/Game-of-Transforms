@@ -15,11 +15,8 @@ namespace GameOfTransforms
     {
         #region Implements ICartesianPlaneGraphics
 
-        [Inject] private ICartesianPlaneData data = default;
-        public ICartesianPlaneData Data => data;
-
-        [Inject] private ICartesianPlaneGraphicsAttributes attributes = default;
-        public ICartesianPlaneGraphicsAttributes Attributes => attributes;
+        [Inject] public ICartesianPlaneData Data { get; }
+        [Inject] public ICartesianPlaneGraphicsAttributes Attributes { get; }
 
         public void DrawCartesianPlane ()
         {
@@ -36,18 +33,26 @@ namespace GameOfTransforms
         private void DrawCartesianPlane (string axisName, Vector3 offsetDirection, Vector3 ortogonalDirection)
         {
             origin = transform.position;
-            DrawCartesianLines(transform, offsetDirection, ortogonalDirection);
-            DrawCartesianAxis(transform, axisName, offsetDirection);
-            DrawCartesianLabels(transform, offsetDirection, ortogonalDirection);
+
+            Transform axis = new GameObject(axisName).transform;
+            axis.SetParent(transform);
+
+            Transform lines = new GameObject("Lines").transform;
+            lines.SetParent(axis);
+
+            Transform labels = new GameObject("Labels").transform;
+            labels.SetParent(axis);
+            
+            axis.position = lines.position = labels.position = transform.position;
+
+            DrawCartesianLines(lines, offsetDirection, ortogonalDirection);
+            DrawCartesianAxis(axis, axisName, offsetDirection);
+            DrawCartesianLabels(labels, offsetDirection, ortogonalDirection);
         }
                           
-        private void DrawCartesianAxis (Transform transform, string name, Vector3 offsetDirection)
+        private void DrawCartesianAxis (Transform axis, string name, Vector3 offsetDirection)
         {
-            Transform axisTransform = new GameObject(name).transform;
-            axisTransform.SetParent(transform);
-            axisTransform.position = transform.position;
-
-            LineRenderer axisLineRenderer = axisTransform.gameObject.AddComponent<LineRenderer>();
+            LineRenderer axisLineRenderer = axis.gameObject.AddComponent<LineRenderer>();
             Vector3 axisStartingPoint = origin - offsetDirection * Data.Size;
             Vector3 axisEndingPoint = origin + offsetDirection * Data.Size;
             Vector3[] axisPoints = new Vector3[] {
@@ -59,7 +64,7 @@ namespace GameOfTransforms
             axisLineRenderer.SetPositions(axisPoints);
         }
 
-        private void DrawCartesianLines (Transform parent, Vector3 offsetDirection, Vector3 ortogonalDirection)
+        private void DrawCartesianLines (Transform lines, Vector3 offsetDirection, Vector3 ortogonalDirection)
         {
             int firstIndex = -((Data.Size - 1) / Attributes.LinesOffset) * Attributes.LinesOffset;
             for (int i = firstIndex; i < Data.Size; i += Attributes.LinesOffset)
@@ -67,7 +72,7 @@ namespace GameOfTransforms
                 if (i != 0)
                 {
                     Transform lineTransform = new GameObject("Line " + i).transform;
-                    lineTransform.SetParent(parent);
+                    lineTransform.SetParent(lines);
                     Vector3 linePosition = lineTransform.position = origin + offsetDirection * i;
                     LineRenderer lineLineRenderer = lineTransform.gameObject.AddComponent<LineRenderer>();
                     Vector3 axisStartingPoint = linePosition - ortogonalDirection * Data.Size;
@@ -83,14 +88,14 @@ namespace GameOfTransforms
             }
         }
 
-        private void DrawCartesianLabels (Transform parent, Vector3 offsetDirection, Vector3 ortogonalDirection)
+        private void DrawCartesianLabels (Transform labels, Vector3 offsetDirection, Vector3 ortogonalDirection)
         {
             int firstIndex = -(Data.Size / Attributes.LabelsOffset) * Attributes.LabelsOffset;
             for (int i = firstIndex; i <= Data.Size; i += Attributes.LabelsOffset)
             {
                 if (i != 0)
                 {
-                    GameObject label = Instantiate(Attributes.LabelPrefab, parent);
+                    GameObject label = Instantiate(Attributes.LabelPrefab, labels);
                     label.name = "Label " + i;
                     label.transform.position = origin + i * offsetDirection + ortogonalDirection * Attributes.LabelDistance;
                     label.GetComponent<Text>().text = i + "";
