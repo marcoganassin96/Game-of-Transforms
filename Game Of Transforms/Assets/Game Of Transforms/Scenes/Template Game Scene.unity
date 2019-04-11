@@ -1192,7 +1192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89ce2f5db0227e40ad3eac809876556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: {fileID: 11400000, guid: b482b0bdac6b6ac4f817366eb6a1e58d, type: 2}
+  onDrawCartesianPlane: {fileID: 11400000, guid: 7bfa722ca1450ce4b93af021ad62d077,
+    type: 2}
 --- !u!4 &925567518
 Transform:
   m_ObjectHideFlags: 0
