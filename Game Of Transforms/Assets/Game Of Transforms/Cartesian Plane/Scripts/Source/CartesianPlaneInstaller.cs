@@ -4,7 +4,6 @@ using Zenject;
 namespace GameOfTransforms
 {
     [CreateAssetMenu(fileName = "Cartesian Plane Installer", menuName = "Installers/CartesianPlaneInstaller")]
-
     internal class CartesianPlaneInstaller : ScriptableObjectInstaller<CartesianPlaneInstaller>
     {
         [SerializeField] private CartesianPlaneGraphicsAttributes graphicsAttributes = default;

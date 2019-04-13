@@ -1,17 +1,10 @@
 ﻿using Core.GameEvents;
 using System;
-using System.Collections;
 using UnityEngine;
 using Zenject;
 
 namespace GameOfTransforms
 {
-    public interface ICartesianPlaneMonoBehaviour
-    {
-        ICartesianPlaneData Data { get; }
-        ICartesianPlaneLogic Logic { get; }
-    }
-
     [Serializable]
     internal class CartesianPlaneMonoBehaviour : MonoBehaviour, ICartesianPlaneMonoBehaviour
     {
@@ -28,9 +21,8 @@ namespace GameOfTransforms
 
         #endregion
 
-        private IEnumerator Start()
+        private void Start()
         {
-            yield return null;
             onDrawCartesianPlane.Raise();
         }              
     }
