@@ -3,11 +3,6 @@ using Zenject;
 
 namespace GameOfTransforms
 {
-    public interface ICartesianPlaneLogic
-    {
-        ICartesianPlaneData Data { get; }
-    }
-
     internal class CartesianPlaneLogic : ICartesianPlaneLogic
     {
         #region Implements ICartesianPlaneLogic

@@ -4,13 +4,6 @@ using Zenject;
 
 namespace GameOfTransforms
 {
-    public interface ICartesianPlaneGraphics
-    {
-        ICartesianPlaneData Data { get; }
-        ICartesianPlaneGraphicsAttributes Attributes { get; }
-        void DrawCartesianPlane ();
-    }
-
     internal class CartesianPlaneGraphics : MonoBehaviour, ICartesianPlaneGraphics
     {
         #region Implements ICartesianPlaneGraphics

@@ -5,12 +5,6 @@ using Zenject;
 
 namespace GameOfTransforms
 {
-    public interface ICartesianPlaneMonoBehaviour
-    {
-        ICartesianPlaneData Data { get; }
-        ICartesianPlaneLogic Logic { get; }
-    }
-
     [Serializable]
     internal class CartesianPlaneMonoBehaviour : MonoBehaviour, ICartesianPlaneMonoBehaviour
     {
