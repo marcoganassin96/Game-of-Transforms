@@ -96,6 +96,29 @@ namespace GameOfTransforms.Tests
 
             #endregion
 
+            #region _1_When_AccessToCoordinatesWithinDataSize_Then_DoesNotThrowExceptions
+
+            [TestCaseSource("_1_testCaseSourceArguments")]
+            public void _1_When_AccessToCoordinatesWithinDataSize_Then_DoesNotThrowExceptions (CartesianPlaneLogicCoordinatesAccessArgs args)
+            {
+                int x = args.X;
+                int y = args.Y;
+                Assert.DoesNotThrow(() =>
+                {
+                    CartesianPlaneLogic logic = new CartesianPlaneLogic(args.Data);
+                    Vector3 result = logic[x, y];
+                });
+            }
+
+            private static readonly object[] _1_testCaseSourceArguments =
+            {
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(1,  1,  1) },
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(10, -10,  0) },
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(20, 12, 20) },
+            };
+
+            #endregion
+
             internal class CartesianPlaneLogicCoordinatesAccessArgs : AArgs
             {
                 public ICartesianPlaneData Data { get; }
