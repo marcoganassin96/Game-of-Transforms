@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
+using TMPro;
 
 namespace GameOfTransforms
 {
@@ -92,7 +92,7 @@ namespace GameOfTransforms
                     GameObject label = Instantiate(Attributes.LabelPrefab, labels);
                     label.name = "Label " + i;
                     label.transform.position = Data.Origin + i * offsetDirection + ortogonalDirection * Attributes.LabelDistance;
-                    label.GetComponent<Text>().text = i + "";
+                    label.GetComponent<TextMeshPro>().text = i.ToString();
                 }
             }
         }
