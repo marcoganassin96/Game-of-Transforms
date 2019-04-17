@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Cartesian Plane Data
   m_EditorClassIdentifier: 
   size: 20
+  origin: {x: 11.81481, y: 0, z: 0}
