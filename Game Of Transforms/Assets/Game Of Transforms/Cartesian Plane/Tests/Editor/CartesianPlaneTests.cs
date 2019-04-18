@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace GameOfTransforms.Tests
+namespace GameOfTransform.CartesianPlane.Tests
 {
     internal class CartesianPlaneTests
     {

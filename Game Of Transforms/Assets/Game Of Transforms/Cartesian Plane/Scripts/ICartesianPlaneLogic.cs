@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameOfTransforms
+namespace GameOfTransform.CartesianPlane
 {
     public interface ICartesianPlaneLogic
     {

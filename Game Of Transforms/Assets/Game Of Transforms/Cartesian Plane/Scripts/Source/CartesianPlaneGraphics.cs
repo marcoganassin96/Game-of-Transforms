@@ -2,7 +2,7 @@
 using Zenject;
 using TMPro;
 
-namespace GameOfTransforms
+namespace GameOfTransform.CartesianPlane
 {
     internal class CartesianPlaneGraphics : MonoBehaviour, ICartesianPlaneGraphics
     {

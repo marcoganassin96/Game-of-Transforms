@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameOfTransforms.GraphicsTests
+namespace GameOfTransform.CartesianPlane.GraphicsTests
 {
     public interface ICartesianPlaneGraphicsTestsData
     {

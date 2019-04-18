@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameOfTransforms
+namespace GameOfTransform.CartesianPlane
 {
     [CreateAssetMenu(fileName = "Cartesian Plane Graphics Attributes", menuName = "Game Of Transforms/Cartesian Plane Graphics Attributes")]
     internal class CartesianPlaneGraphicsAttributes : ScriptableObject, ICartesianPlaneGraphicsAttributes
