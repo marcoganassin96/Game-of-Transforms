@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace GameOfTransforms
+namespace GameOfTransform.CartesianPlane
 {
     [CreateAssetMenu(fileName = "Cartesian Plane Installer", menuName = "Installers/CartesianPlaneInstaller")]
     internal class CartesianPlaneInstaller : ScriptableObjectInstaller<CartesianPlaneInstaller>

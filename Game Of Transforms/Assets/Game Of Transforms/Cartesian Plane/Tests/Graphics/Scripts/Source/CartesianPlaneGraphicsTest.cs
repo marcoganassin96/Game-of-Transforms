@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace GameOfTransforms.GraphicsTests
+namespace GameOfTransform.CartesianPlane.Tests.Graphics
 {
     internal class CartesianPlaneGraphicsTest : MonoBehaviour
     {

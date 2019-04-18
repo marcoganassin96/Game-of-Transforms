@@ -1,4 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("GameOfTransforms.Tests")]
-namespace GameOfTransforms { }
+[assembly: InternalsVisibleTo("GameOfTransforms.CartesianPlane.Tests")]
+namespace GameOfTransform.CartesianPlane { }

@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-namespace GameOfTransforms
+namespace GameOfTransform.CartesianPlane
 {
     [Serializable]
     internal class CartesianPlaneMonoBehaviour : MonoBehaviour, ICartesianPlaneMonoBehaviour

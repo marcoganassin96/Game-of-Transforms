@@ -1,7 +1,7 @@
 {
-    "name": "GameOfTransforms.Tests",
+    "name": "GameOfTransforms.CartesianPlane.Tests",
     "references": [
-        "GameOfTransforms",
+        "GameOfTransforms.CartesianPlane",
         "Zenject-TestFramework",
         "Core.Args"
     ],
