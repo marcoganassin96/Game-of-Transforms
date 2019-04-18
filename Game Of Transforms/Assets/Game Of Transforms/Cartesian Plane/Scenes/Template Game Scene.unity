@@ -1516,7 +1516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89ce2f5db0227e40ad3eac809876556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cartesianPlaneTransform: {fileID: 711019111}
   onDrawCartesianPlane: {fileID: 11400000, guid: 7bfa722ca1450ce4b93af021ad62d077,
     type: 2}
 --- !u!4 &1107902750
@@ -1600,7 +1599,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _parentNewObjectsUnderSceneContext: 0
-  _contractNames: []
+  _contractNames:
+  - Cartesian Plane Main Decorator
   _parentContractNames: []
 --- !u!4 &1337718742
 Transform:
