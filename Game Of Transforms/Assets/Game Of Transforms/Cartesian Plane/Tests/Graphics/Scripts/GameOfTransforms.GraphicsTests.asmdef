@@ -2,7 +2,8 @@
     "name": "GameOfTransforms.GraphicsTests",
     "references": [
         "GameOfTransforms",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Zenject"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
