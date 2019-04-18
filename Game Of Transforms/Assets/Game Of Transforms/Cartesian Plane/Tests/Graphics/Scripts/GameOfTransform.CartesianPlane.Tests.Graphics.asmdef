@@ -1,5 +1,5 @@
 {
-    "name": "GameOfTransforms.GraphicsTests",
+    "name": "GameOfTransform.CartesianPlane.Tests.Graphics",
     "references": [
         "GameOfTransforms.CartesianPlane",
         "Unity.TextMeshPro",
