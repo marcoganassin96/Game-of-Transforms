@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameOfTransform.CartesianPlane.GraphicsTests
+namespace GameOfTransform.CartesianPlane.Tests.Graphics
 {
     [CreateAssetMenu(fileName = "Cartesian Plane Graphics Tests Data", menuName = "Game Of Transforms/Graphics Tests/Cartesian Plane Graphics Tests Data")]
     internal class CartesianPlaneGraphicsTestsData : ScriptableObject, ICartesianPlaneGraphicsTestsData

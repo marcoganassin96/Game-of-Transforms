@@ -1,16 +1,12 @@
 {
-    "name": "GameOfTransforms.Tests",
+    "name": "GameOfTransform.CartesianPlane.Tests.Graphics",
     "references": [
         "GameOfTransforms.CartesianPlane",
-        "Zenject-TestFramework",
-        "Core.Args"
+        "Unity.TextMeshPro",
+        "Zenject"
     ],
-    "optionalUnityReferences": [
-        "TestAssemblies"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
