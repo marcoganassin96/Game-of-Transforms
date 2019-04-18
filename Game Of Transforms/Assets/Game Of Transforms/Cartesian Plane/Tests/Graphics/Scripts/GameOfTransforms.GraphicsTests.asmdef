@@ -1,7 +1,7 @@
 {
     "name": "GameOfTransforms.GraphicsTests",
     "references": [
-        "GameOfTransforms",
+        "GameOfTransforms.CartesianPlane",
         "Unity.TextMeshPro",
         "Zenject"
     ],
