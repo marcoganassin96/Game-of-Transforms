@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace GameOfTransform.CartesianPlane.GraphicsTests
+namespace GameOfTransform.CartesianPlane.Tests.Graphics
 {
     [CreateAssetMenu(fileName = "Cartesian Plane Graphics Tests Installer", menuName = "Game Of Transforms/Graphics Tests/Cartesian Plane Graphics Tests Installer")]
     internal class CartesianPlaneGraphicsTestsInstaller : ScriptableObjectInstaller<CartesianPlaneGraphicsTestsInstaller>
