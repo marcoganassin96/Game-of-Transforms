@@ -2,6 +2,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using System;
+using UnityEngine;
 using Zenject;
 
 namespace GameOfTransforms.Tests
@@ -67,6 +68,73 @@ namespace GameOfTransforms.Tests
                 public override string GetArgs ()
                 {                    
                     return string.Format("size={0}", Data.Size);
+                }
+            }
+        }
+
+        internal class _1_The_Coordinate_Access : CartesianPlaneUnitTestsBase
+        {
+            #region _0_When_AccessToCoordinatesOutOfDataSize_Then_ThrowsArgumentOutOfRangeException
+
+            [TestCaseSource("_0_testCaseSourceArguments")]
+            public void _0_When_AccessToCoordinatesOutOfDataSize_Then_ThrowsArgumentOutOfRangeException (CartesianPlaneLogicCoordinatesAccessArgs args)
+            {
+                int x = args.X;
+                int y = args.Y;
+                Assert.Throws<ArgumentOutOfRangeException>(() => {
+                    CartesianPlaneLogic logic = new CartesianPlaneLogic(args.Data);
+                    Vector3 result = logic[x, y];
+                });
+            }
+
+            private static readonly object[] _0_testCaseSourceArguments =
+            {
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(1,  2,  1) },
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(10, 8,  -12) },
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(20, 21, -45) },
+            };
+
+            #endregion
+
+            #region _1_When_AccessToCoordinatesWithinDataSize_Then_DoesNotThrowExceptions
+
+            [TestCaseSource("_1_testCaseSourceArguments")]
+            public void _1_When_AccessToCoordinatesWithinDataSize_Then_DoesNotThrowExceptions (CartesianPlaneLogicCoordinatesAccessArgs args)
+            {
+                int x = args.X;
+                int y = args.Y;
+                Assert.DoesNotThrow(() =>
+                {
+                    CartesianPlaneLogic logic = new CartesianPlaneLogic(args.Data);
+                    Vector3 result = logic[x, y];
+                });
+            }
+
+            private static readonly object[] _1_testCaseSourceArguments =
+            {
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(1,  1,  1) },
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(10, -10,  0) },
+                new object[] { new CartesianPlaneLogicCoordinatesAccessArgs(20, 12, 20) },
+            };
+
+            #endregion
+
+            internal class CartesianPlaneLogicCoordinatesAccessArgs : AArgs
+            {
+                public ICartesianPlaneData Data { get; }
+                public int X { get; }
+                public int Y { get; }
+
+                public CartesianPlaneLogicCoordinatesAccessArgs (int size, int x, int y)
+                {
+                    Data = GetCartesianPlaneDataMock(size);
+                    X = x;
+                    Y = y;
+                }
+
+                public override string GetArgs ()
+                {
+                    return string.Format("size={0},x={1},y={2}", Data.Size, X, Y);
                 }
             }
         }
