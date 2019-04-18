@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
+using TMPro;
 
 namespace GameOfTransforms
 {
@@ -11,6 +11,11 @@ namespace GameOfTransforms
         [Inject] public ICartesianPlaneData Data { get; }
         [Inject] public ICartesianPlaneGraphicsAttributes Attributes { get; }
 
+        private void Awake ()
+        {
+            transform.position = Data.Origin;
+        }
+
         public void DrawCartesianPlane ()
         {
             DrawCartesianPlane("Axis X", Vector3.right, Vector3.up);
@@ -18,15 +23,11 @@ namespace GameOfTransforms
         }
 
         #endregion
-
-        private Vector3 origin = default;
-
+        
         #region Cartesian Plane Drawing
         
         private void DrawCartesianPlane (string axisName, Vector3 offsetDirection, Vector3 ortogonalDirection)
         {
-            origin = transform.position;
-
             Transform axis = new GameObject(axisName).transform;
             axis.SetParent(transform);
 
@@ -36,7 +37,7 @@ namespace GameOfTransforms
             Transform labels = new GameObject("Labels").transform;
             labels.SetParent(axis);
             
-            axis.position = lines.position = labels.position = transform.position;
+            axis.position = lines.position = labels.position = Data.Origin;
 
             DrawCartesianLines(lines, offsetDirection, ortogonalDirection);
             DrawCartesianAxis(axis, axisName, offsetDirection);
@@ -46,8 +47,8 @@ namespace GameOfTransforms
         private void DrawCartesianAxis (Transform axis, string name, Vector3 offsetDirection)
         {
             LineRenderer axisLineRenderer = axis.gameObject.AddComponent<LineRenderer>();
-            Vector3 axisStartingPoint = origin - offsetDirection * Data.Size;
-            Vector3 axisEndingPoint = origin + offsetDirection * Data.Size;
+            Vector3 axisStartingPoint = Data.Origin - offsetDirection * Data.Size;
+            Vector3 axisEndingPoint = Data.Origin + offsetDirection * Data.Size;
             Vector3[] axisPoints = new Vector3[] {
                     axisStartingPoint,
                     axisEndingPoint
@@ -66,14 +67,14 @@ namespace GameOfTransforms
                 {
                     Transform lineTransform = new GameObject("Line " + i).transform;
                     lineTransform.SetParent(lines);
-                    Vector3 linePosition = lineTransform.position = origin + offsetDirection * i;
+                    Vector3 linePosition = lineTransform.position = Data.Origin + offsetDirection * i;
                     LineRenderer lineLineRenderer = lineTransform.gameObject.AddComponent<LineRenderer>();
                     Vector3 axisStartingPoint = linePosition - ortogonalDirection * Data.Size;
                     Vector3 axisEndingPoint = linePosition + ortogonalDirection * Data.Size;
                     Vector3[] axisPoints = new Vector3[] {
-                            axisStartingPoint,
-                            axisEndingPoint
-                        };
+                        axisStartingPoint,
+                        axisEndingPoint
+                    };
                     lineLineRenderer.material = Attributes.CartesianLinesMaterial;
                     lineLineRenderer.startWidth = lineLineRenderer.endWidth = Attributes.CartesianLinesWidth;
                     lineLineRenderer.SetPositions(axisPoints);
@@ -90,8 +91,8 @@ namespace GameOfTransforms
                 {
                     GameObject label = Instantiate(Attributes.LabelPrefab, labels);
                     label.name = "Label " + i;
-                    label.transform.position = origin + i * offsetDirection + ortogonalDirection * Attributes.LabelDistance;
-                    label.GetComponent<Text>().text = i + "";
+                    label.transform.position = Data.Origin + i * offsetDirection + ortogonalDirection * Attributes.LabelDistance;
+                    label.GetComponent<TextMeshPro>().text = i.ToString();
                 }
             }
         }

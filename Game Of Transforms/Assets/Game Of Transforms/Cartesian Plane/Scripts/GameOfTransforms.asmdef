@@ -2,7 +2,8 @@
     "name": "GameOfTransforms",
     "references": [
         "Core.GameEvents",
-        "Zenject"
+        "Zenject",
+        "Unity.TextMeshPro"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

@@ -10,6 +10,9 @@ namespace GameOfTransforms
         [SerializeField] private int size = default;
         public int Size => size;
 
+        [SerializeField] private Vector3 origin = default;
+        public Vector3 Origin => origin;
+
         #endregion
     }
 }

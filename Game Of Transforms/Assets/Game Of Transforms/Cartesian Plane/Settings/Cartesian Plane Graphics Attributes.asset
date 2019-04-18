@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartesianAxisMaterial: {fileID: 2100000, guid: 8df67e0f710e02d4193eee57fbe025d2,
     type: 2}
-  cartesianAxisWidth: 0.5
+  cartesianAxisWidth: 0.25
   linesOffset: 1
   cartesianLinesMaterial: {fileID: 2100000, guid: c002771f9bb774c42b82e22213b63877,
     type: 2}
@@ -22,4 +22,4 @@ MonoBehaviour:
   labelPrefab: {fileID: 4467099607491526508, guid: 632e970ac6fa3634086edb177e9813ae,
     type: 3}
   labelOffset: 3
-  labelDistance: 1
+  labelDistance: 0.6
