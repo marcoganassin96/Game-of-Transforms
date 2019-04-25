@@ -1,0 +1,15 @@
+{
+    "name": "GameOfTransform.Transformation.TransformationMatricesSettings",
+    "references": [
+        "GameOfTransform.Transformation",
+        "RotatoryHeart.SerializableDictionary"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
