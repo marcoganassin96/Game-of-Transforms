@@ -3,7 +3,7 @@ using Zenject;
 
 namespace GameOfTransforms.CartesianPlane.Tests.Graphics
 {
-    [CreateAssetMenu(fileName = "Cartesian Plane Graphics Tests Installer", menuName = "Game Of Transforms/Graphics Tests/Cartesian Plane Graphics Tests Installer")]
+    [CreateAssetMenu(fileName = "Cartesian Plane Graphics Tests Installer", menuName = "Game Of Transforms/Cartesian Plane/Tests/Graphics/Cartesian Plane Graphics Tests Installer")]
     internal class CartesianPlaneGraphicsTestsInstaller : ScriptableObjectInstaller<CartesianPlaneGraphicsTestsInstaller>
     {
         [SerializeField] private CartesianPlaneGraphicsTestsData data = default;
@@ -13,6 +13,4 @@ namespace GameOfTransforms.CartesianPlane.Tests.Graphics
             Container.Bind<ICartesianPlaneGraphicsTestsData>().FromInstance(data).AsCached();
         }
     }
-
-
 }

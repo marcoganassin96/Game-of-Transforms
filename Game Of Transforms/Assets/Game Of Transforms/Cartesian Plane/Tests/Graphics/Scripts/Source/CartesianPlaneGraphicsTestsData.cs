@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameOfTransforms.CartesianPlane.Tests.Graphics
 {
-    [CreateAssetMenu(fileName = "Cartesian Plane Graphics Tests Data", menuName = "Game Of Transforms/Graphics Tests/Cartesian Plane Graphics Tests Data")]
+    [CreateAssetMenu(fileName = "Cartesian Plane Graphics Tests Data", menuName = "Game Of Transforms/Cartesian Plane/Tests/Graphics/Cartesian Plane Graphics Tests Data")]
     internal class CartesianPlaneGraphicsTestsData : ScriptableObject, ICartesianPlaneGraphicsTestsData
     {
         [SerializeField] private GameObject coordinateMarkerPrefab = default;
