@@ -1,0 +1,15 @@
+{
+    "name": "GameOfTransforms.Events",
+    "references": [
+        "Core.GameEvents",
+        "GameOfTransforms.Transformation"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
