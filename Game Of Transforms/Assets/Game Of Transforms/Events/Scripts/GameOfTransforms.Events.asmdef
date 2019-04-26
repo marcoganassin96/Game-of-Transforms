@@ -1,7 +1,8 @@
 {
     "name": "GameOfTransforms.Events",
     "references": [
-        "Core.GameEvents"
+        "Core.GameEvents",
+        "GameOfTransforms.Transformation"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
