@@ -2,7 +2,7 @@
 
 namespace GameOfTransforms.CartesianPlane
 {
-    [CreateAssetMenu(fileName = "Cartesian Plane Graphics Attributes", menuName = "Game Of Transforms/Cartesian Plane Graphics Attributes")]
+    [CreateAssetMenu(fileName = "Cartesian Plane Graphics Attributes", menuName = "Game Of Transforms/Cartesian Plane/Cartesian Plane Graphics Attributes")]
     internal class CartesianPlaneGraphicsAttributes : ScriptableObject, ICartesianPlaneGraphicsAttributes
     {
         #region Implements ICartesianPlaneGraphicsAttributes
