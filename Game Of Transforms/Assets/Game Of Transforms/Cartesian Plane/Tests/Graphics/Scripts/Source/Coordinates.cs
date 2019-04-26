@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameOfTransform.CartesianPlane.Tests.Graphics
+namespace GameOfTransforms.CartesianPlane.Tests.Graphics
 {
     [Serializable]
     public struct Coordinate

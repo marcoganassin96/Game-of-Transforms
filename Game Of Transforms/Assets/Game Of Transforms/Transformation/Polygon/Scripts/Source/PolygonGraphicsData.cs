@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameOfTransform.Transformation.Polygon
+namespace GameOfTransforms.Transformation.Polygon
 {
     internal class PolygonGraphicsData : MonoBehaviour, IPolygonGraphicsData
     {

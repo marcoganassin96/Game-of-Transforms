@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 
-namespace GameOfTransform.Transformation
+namespace GameOfTransforms.Transformation
 {
     public class PartialTransformationMatrices
     {

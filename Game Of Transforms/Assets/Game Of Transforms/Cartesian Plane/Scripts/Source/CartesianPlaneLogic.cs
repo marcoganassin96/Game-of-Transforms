@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace GameOfTransform.CartesianPlane
+namespace GameOfTransforms.CartesianPlane
 {
     internal class CartesianPlaneLogic : ICartesianPlaneLogic
     {

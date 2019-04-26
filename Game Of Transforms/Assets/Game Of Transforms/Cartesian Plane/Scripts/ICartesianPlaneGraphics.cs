@@ -1,4 +1,4 @@
-﻿namespace GameOfTransform.CartesianPlane
+﻿namespace GameOfTransforms.CartesianPlane
 {
     public interface ICartesianPlaneGraphics
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameOfTransform.Transformation.TransformationMatricesSettings
+namespace GameOfTransforms.Transformation.TransformationMatricesSettings
 {
     [Serializable]
     public struct TransformationMatrixSetting

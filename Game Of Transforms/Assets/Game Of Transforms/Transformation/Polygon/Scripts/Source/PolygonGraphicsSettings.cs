@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameOfTransform.Transformation.Polygon
+namespace GameOfTransforms.Transformation.Polygon
 {
     [CreateAssetMenu(fileName = "Cartesian Plane Data", menuName = "Game Of Transforms/Polygon/Cartesian Plane Data")]
     internal class PolygonGraphicsSettings: ScriptableObject, IPolygonGraphicsSettings

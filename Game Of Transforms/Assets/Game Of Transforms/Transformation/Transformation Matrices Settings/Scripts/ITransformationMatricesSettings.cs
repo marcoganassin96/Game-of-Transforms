@@ -1,4 +1,4 @@
-﻿namespace GameOfTransform.Transformation.TransformationMatricesSettings
+﻿namespace GameOfTransforms.Transformation.TransformationMatricesSettings
 { 
     public interface ITransformationMatricesSettings
     {

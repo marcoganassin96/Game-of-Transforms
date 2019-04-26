@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameOfTransform.Transformation.Polygon
+namespace GameOfTransforms.Transformation.Polygon
 {
     public class Polygon : MonoBehaviour
     {

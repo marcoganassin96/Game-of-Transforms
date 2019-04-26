@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameOfTransform.Transformation.Polygon
+namespace GameOfTransforms.Transformation.Polygon
 {
     public interface IPolygonGraphicsData
     {

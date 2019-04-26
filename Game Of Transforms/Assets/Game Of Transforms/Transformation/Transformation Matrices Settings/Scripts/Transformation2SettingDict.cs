@@ -1,7 +1,7 @@
 ﻿using RotaryHeart.Lib.SerializableDictionary;
 using System;
 
-namespace GameOfTransform.Transformation.TransformationMatricesSettings
+namespace GameOfTransforms.Transformation.TransformationMatricesSettings
 {
     [Serializable]
     public class Transformation2SettingDict : SerializableDictionaryBase<Transformation, TransformationMatrixSetting> { };

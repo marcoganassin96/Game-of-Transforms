@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameOfTransform.Transformation.TransformationMatricesSettings
+namespace GameOfTransforms.Transformation.TransformationMatricesSettings
 {
     [CreateAssetMenu(fileName = "Transformation Matrices Settings", menuName = "Game Of Transforms/Transformation/Transformation Matrices Settings/Transformation Matrices Settings")]
     internal class TransformationMatricesSettings : ScriptableObject, ITransformationMatricesSettings

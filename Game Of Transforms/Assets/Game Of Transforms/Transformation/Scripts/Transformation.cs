@@ -1,4 +1,4 @@
-﻿namespace GameOfTransform.Transformation
+﻿namespace GameOfTransforms.Transformation
 {
     public enum Transformation
     {

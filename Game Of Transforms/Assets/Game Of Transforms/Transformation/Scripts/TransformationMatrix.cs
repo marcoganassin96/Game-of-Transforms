@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameOfTransform.Transformation
+namespace GameOfTransforms.Transformation
 {
     [Serializable]
     public struct TransformationMatrix

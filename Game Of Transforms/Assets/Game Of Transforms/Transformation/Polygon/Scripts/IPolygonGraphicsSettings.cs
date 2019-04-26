@@ -1,4 +1,4 @@
-﻿namespace GameOfTransform.Transformation.Polygon
+﻿namespace GameOfTransforms.Transformation.Polygon
 {
     public interface IPolygonGraphicsSettings
     {
