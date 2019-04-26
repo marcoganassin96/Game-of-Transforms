@@ -2,7 +2,7 @@
 
 namespace GameOfTransforms.CartesianPlane
 {
-    [CreateAssetMenu(fileName = "Cartesian Plane Data", menuName = "Game Of Transforms/Cartesian Plane Data")]
+    [CreateAssetMenu(fileName = "Cartesian Plane Data", menuName = "Game Of Transforms/Cartesian Plane/Cartesian Plane Data")]
     internal class CartesianPlaneData : ScriptableObject, ICartesianPlaneData
     {
         #region Implements ICartesianPlaneData
