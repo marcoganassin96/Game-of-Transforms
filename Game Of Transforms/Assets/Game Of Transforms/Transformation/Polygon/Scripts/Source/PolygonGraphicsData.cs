@@ -2,8 +2,13 @@
 
 namespace GameOfTransform.Transformation.Polygon
 {
-    public class PolygonGraphicsData : MonoBehaviour, IPolygonGraphicsData
+    internal class PolygonGraphicsData : MonoBehaviour, IPolygonGraphicsData
     {
         public Transform[] Points { get; }
+
+        public PolygonGraphicsData(Transform[] points)
+        {
+            Points = points;
+        }
     }
 }
