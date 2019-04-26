@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d305cb05f73090443ab065642c8b4539, type: 3}
-  m_Name: Transformation Matrix Settings
+  m_Name: Transformation Matrces Settings
   m_EditorClassIdentifier: 
-  transformationMatrixStructures:
+  transformation2Settings:
     reorderableList:
       canAdd: 1
       canRemove: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
         isExpanded: 1
         _keyValues: 0000000001000000
         _keys: 0000000001000000
-        _values: 0100000001000000
+        _values: 0000000000000000
     - probability: 1
       directions2Probabilities:
         reorderableList:
@@ -118,7 +118,7 @@ MonoBehaviour:
         isExpanded: 1
         _keyValues: 000000000100000002000000
         _keys: 000000000100000002000000
-        _values: 000000000000000000000000
+        _values: 010000000100000001000000
     - probability: 1
       directions2Probabilities:
         reorderableList:

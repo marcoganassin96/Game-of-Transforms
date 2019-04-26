@@ -1,7 +1,7 @@
 {
-    "name": "GameOfTransform.Transformation.TransformationMatricesSettings",
+    "name": "GameOfTransforms.Transformation.TransformationMatricesSettings",
     "references": [
-        "GameOfTransform.Transformation",
+        "GameOfTransforms.Transformation",
         "RotatoryHeart.SerializableDictionary"
     ],
     "optionalUnityReferences": [],
