@@ -10,7 +10,7 @@ namespace GameOfTransforms.Transformation
 
         #region Translations
 
-        public static PartialMatrix HorizontalTranslation { get; } = delegate (int c)
+        public static PartialMatrix HorizontalTranslation { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 1, 0, 0, c,
@@ -20,7 +20,7 @@ namespace GameOfTransforms.Transformation
             );
         };
 
-        public static PartialMatrix VerticalTranslation { get; } = delegate (int c)
+        public static PartialMatrix VerticalTranslation { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 1, 0, 0, 0,
@@ -34,8 +34,9 @@ namespace GameOfTransforms.Transformation
 
         #region Rotations
 
-        public static PartialMatrix OriginRotation { get; } = delegate (int c)
+        public static PartialMatrix OriginRotation { get; } = delegate (float q)
         {
+            double c = Math.PI * q / 180.0;
             float m11 = Convert.ToSingle(Math.Cos(c));
             float m12 = Convert.ToSingle(-Math.Sin(c));
             float m21 = Convert.ToSingle(Math.Sin(c));
@@ -53,7 +54,7 @@ namespace GameOfTransforms.Transformation
 
         #region Scalings
 
-        public static PartialMatrix HorizontalScaling { get; } = delegate (int c)
+        public static PartialMatrix HorizontalScaling { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 c, 0, 0, 0,
@@ -63,7 +64,7 @@ namespace GameOfTransforms.Transformation
             );
         };
 
-        public static PartialMatrix VerticalScaling { get; } = delegate (int c)
+        public static PartialMatrix VerticalScaling { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 1, 0, 0, 0,
@@ -73,7 +74,7 @@ namespace GameOfTransforms.Transformation
             );
         };
 
-        public static PartialMatrix OriginScaling { get; } = delegate (int c)
+        public static PartialMatrix OriginScaling { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 c, 0, 0, 0,
@@ -87,7 +88,7 @@ namespace GameOfTransforms.Transformation
 
         #region Reflections
 
-        public static PartialMatrix HorizontalReflection { get; } = delegate (int c)
+        public static PartialMatrix HorizontalReflection { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 -1, 0, 0, 0,
@@ -97,7 +98,7 @@ namespace GameOfTransforms.Transformation
             );
         };
 
-        public static PartialMatrix VerticalReflection { get; } = delegate (int c)
+        public static PartialMatrix VerticalReflection { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 1, 0, 0, 0,
@@ -107,7 +108,7 @@ namespace GameOfTransforms.Transformation
             );
         };
 
-        public static PartialMatrix OriginReflection { get; } = delegate (int c)
+        public static PartialMatrix OriginReflection { get; } = delegate (float c)
         {
             return new Matrix4x4(
                 -1, 0, 0, 0,
