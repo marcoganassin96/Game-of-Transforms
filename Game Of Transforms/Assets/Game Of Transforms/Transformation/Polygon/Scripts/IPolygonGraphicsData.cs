@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace GameOfTransforms.Transformation.Polygon
 {
     public interface IPolygonGraphicsData
     {
-        Transform[] Points { get; }
+        List<Transform> Points { get; }
     }
 }

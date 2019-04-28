@@ -1,14 +1,20 @@
-﻿using UnityEngine;
+﻿using GameOfTransforms.Events;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace GameOfTransforms.Transformation.Polygon
 {
-    internal class PolygonGraphicsData : MonoBehaviour, IPolygonGraphicsData
+    [CreateAssetMenu(fileName = "Polygon Graphics Data", menuName = "Game Of Transforms/Transformation/Polygon/Polygon Graphics Data")]
+    internal class PolygonGraphicsData : ScriptableObject, IPolygonGraphicsData
     {
-        public Transform[] Points { get; }
+        [SerializeField] private List<Transform> points = default;
+        public List<Transform> Points => points;
+        
+        [SerializeField] private IOnNewPolygonGraphicsData onNewPolygonGraphicsData = default;
 
-        public PolygonGraphicsData(Transform[] points)
+        internal void OnNewPolygon ()
         {
-            Points = points;
+            points = onNewPolygonGraphicsData.Points;
         }
     }
 }
