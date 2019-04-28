@@ -1,7 +1,10 @@
 {
     "name": "GameOfTransforms.Transformation.Transformator",
     "references": [
-        "GameOfTransforms.Transformation"
+        "GameOfTransforms.Transformation",
+        "GameOfTransforms.Transformation.Polygon",
+        "GameOfTransforms.Events",
+        "Zenject"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
