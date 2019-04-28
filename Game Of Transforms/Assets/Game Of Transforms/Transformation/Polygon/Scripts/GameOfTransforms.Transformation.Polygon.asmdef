@@ -1,7 +1,8 @@
 {
     "name": "GameOfTransforms.Transformation.Polygon",
     "references": [
-        "GameOfTransforms.Events"
+        "GameOfTransforms.Events",
+        "Zenject"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
