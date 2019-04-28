@@ -1,6 +1,7 @@
 ﻿using GameOfTransforms.Events;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 using Vector2 = System.Numerics.Vector2;
 
 namespace GameOfTransforms.Transformation.Polygon
@@ -11,7 +12,7 @@ namespace GameOfTransforms.Transformation.Polygon
         [SerializeField] private List<Vector2> points = default;
         public List<Vector2> Points => points;
 
-        [SerializeField] private IOnNewPolygonData onNewPolygonData = default;
+        [Inject] private IOnNewPolygonData onNewPolygonData = default;
 
         internal void OnNewPolygon ()
         {

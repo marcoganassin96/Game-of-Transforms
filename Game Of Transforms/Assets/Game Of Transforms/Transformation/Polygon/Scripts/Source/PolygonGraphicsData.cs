@@ -1,6 +1,7 @@
 ﻿using GameOfTransforms.Events;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace GameOfTransforms.Transformation.Polygon
 {
@@ -9,8 +10,8 @@ namespace GameOfTransforms.Transformation.Polygon
     {
         [SerializeField] private List<Transform> points = default;
         public List<Transform> Points => points;
-        
-        [SerializeField] private IOnNewPolygonGraphicsData onNewPolygonGraphicsData = default;
+
+        [Inject] private IOnNewPolygonGraphicsData onNewPolygonGraphicsData = default;
 
         internal void OnNewPolygon ()
         {
