@@ -6,9 +6,9 @@ namespace GameOfTransforms.Transformation
     public struct TransformationMatrix
     {
         public PartialMatrix PartialMatrix { get; }
-        public int Quantity { get; }
+        public float Quantity { get; }
 
-        public TransformationMatrix(int quantity, PartialMatrix partialMatrix)
+        public TransformationMatrix(PartialMatrix partialMatrix, float quantity)
         {
             PartialMatrix = partialMatrix;
             Quantity = quantity;
