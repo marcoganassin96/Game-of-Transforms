@@ -13,8 +13,8 @@ namespace GameOfTransforms.Transformation.Polygon
         public List<Vector2> Points => points;
 
         [Inject] private IOnNewPolygonData onNewPolygonData = default;
-
-        internal void OnNewPolygon ()
+        
+        public void OnNewPolygon ()
         {
             points = onNewPolygonData.Points;
         }
