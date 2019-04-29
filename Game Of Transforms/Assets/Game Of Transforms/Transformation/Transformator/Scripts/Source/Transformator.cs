@@ -7,11 +7,11 @@ using Vector2 = System.Numerics.Vector2;
 
 namespace GameOfTransforms.Transformation.Transformator
 {
-    public class Transformator : MonoBehaviour
+    public class Transformator : ITransformator
     {
         [Inject] private IPolygonData polygonData = default;
         [Inject] private IOnTransformationData transformatorEventData = default;
-        
+
         public void OnTransformation ()
         {
             Matrix4x4 matrix = transformatorEventData.TransformationMatrix.PartialMatrix(transformatorEventData.TransformationMatrix.Quantity);
@@ -30,8 +30,8 @@ namespace GameOfTransforms.Transformation.Transformator
 
         private Matrix4x4 Vector2Matrix (Vector2 point)
         {
-            float x = point.X;
-            float y = point.Y;
+            float x = Mathf.Round(point.X * 100) / 100F;
+            float y = Mathf.Round(point.Y * 100) / 100F;
             return new Matrix4x4
             (
                 x, 0, 0, 0,
@@ -43,8 +43,8 @@ namespace GameOfTransforms.Transformation.Transformator
 
         private Vector2 Matrix2Vector (Matrix4x4 matrix)
         {
-            float x = matrix.M11;
-            float y = matrix.M21;
+            float x = Mathf.Round(matrix.M11 * 100) / 100F;
+            float y = Mathf.Round(matrix.M21 * 100) / 100F;
             return new Vector2(x, y);
         }
 
