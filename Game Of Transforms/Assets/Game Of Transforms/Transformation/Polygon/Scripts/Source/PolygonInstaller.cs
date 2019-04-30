@@ -5,7 +5,7 @@ using Zenject;
 namespace GameOfTransforms.Transformation.Polygon
 {
     [CreateAssetMenu(fileName = "Polygon Installer", menuName = "Game Of Transforms/Transformation/Polygon/Polygon Installer")]
-    public class PolygonInstaller : ScriptableObjectInstaller<PolygonInstaller>
+    internal class PolygonInstaller : ScriptableObjectInstaller<PolygonInstaller>
     {
         [SerializeField] private OnNewPolygonData onNewPolygonData = default;
         [SerializeField] private OnNewPolygonGraphicsData onNewPolygonGraphicsData = default;
