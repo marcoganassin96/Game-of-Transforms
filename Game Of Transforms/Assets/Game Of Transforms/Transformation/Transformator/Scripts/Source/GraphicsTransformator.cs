@@ -6,7 +6,7 @@ using Matrix4x4 = System.Numerics.Matrix4x4;
 
 namespace GameOfTransforms.Transformation.Transformator
 {
-    public class GraphicsTransformator : MonoBehaviour
+    internal class GraphicsTransformator : MonoBehaviour
     {
         [Inject] private IPolygonGraphicsData polygonGraphicsData = default;
         [Inject] private IPolygonGraphicsSettings polygonGraphicsSettings = default;
