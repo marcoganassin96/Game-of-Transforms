@@ -6,7 +6,7 @@ using Matrix4x4 = System.Numerics.Matrix4x4;
 
 namespace GameOfTransforms.Transformation.Transformator
 {
-    public class GraphicsTransformator : MonoBehaviour
+    internal class GraphicsTransformator : MonoBehaviour
     {
         [Inject] private IPolygonGraphicsData polygonGraphicsData = default;
         [Inject] private IPolygonGraphicsSettings polygonGraphicsSettings = default;
@@ -15,7 +15,7 @@ namespace GameOfTransforms.Transformation.Transformator
         public void OnTransformation ()
         {
             PartialMatrix partialMatrix = transformatorEventData.TransformationMatrix.PartialMatrix;
-            int quantity = transformatorEventData.TransformationMatrix.Quantity;
+            float quantity = transformatorEventData.TransformationMatrix.Quantity;
 
             float c = 0F;
             for (c = 0F; c + polygonGraphicsSettings.AnimationSpeed < quantity; c += polygonGraphicsSettings.AnimationSpeed)
@@ -59,7 +59,5 @@ namespace GameOfTransforms.Transformation.Transformator
         }
 
         #endregion
-
-
     }
 }

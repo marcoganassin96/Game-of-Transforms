@@ -1,0 +1,14 @@
+{
+    "name": "GameOfTransforms.Transformation.Transformator.Tests.Graphics",
+    "references": [
+        "GameOfTransforms.Transformation.Transformator"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
