@@ -15,7 +15,7 @@ namespace GameOfTransforms.Transformation.Transformator
         public void OnTransformation ()
         {
             PartialMatrix partialMatrix = transformatorEventData.TransformationMatrix.PartialMatrix;
-            int quantity = transformatorEventData.TransformationMatrix.Quantity;
+            float quantity = transformatorEventData.TransformationMatrix.Quantity;
 
             float c = 0F;
             for (c = 0F; c + polygonGraphicsSettings.AnimationSpeed < quantity; c += polygonGraphicsSettings.AnimationSpeed)
@@ -59,7 +59,5 @@ namespace GameOfTransforms.Transformation.Transformator
         }
 
         #endregion
-
-
     }
 }
