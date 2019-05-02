@@ -20,13 +20,13 @@ namespace GameOfTransforms.Transformation.Transformator
                 polygonData.Points[i] = Multiply(matrix, polygonData.Points[i]);
             }
         }
-        
-        #region Transformator Utilities
 
-        private Vector2 Multiply (Matrix4x4 matrix, Vector2 point)
+        public Vector2 Multiply (Matrix4x4 matrix, Vector2 point)
         {
             return Matrix2Vector(Matrix4x4.Multiply(matrix, Vector2Matrix(point)));
         }
+
+        #region Transformator Utilities
 
         private Matrix4x4 Vector2Matrix (Vector2 point)
         {
