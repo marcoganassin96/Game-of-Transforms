@@ -3,7 +3,6 @@ using GameOfTransforms.Transformation.Polygon;
 using UnityEngine;
 using Zenject;
 using Matrix4x4 = System.Numerics.Matrix4x4;
-using Vector2 = System.Numerics.Vector2;
 
 namespace GameOfTransforms.Transformation.Transformator
 {
@@ -30,8 +29,8 @@ namespace GameOfTransforms.Transformation.Transformator
 
         private Matrix4x4 Vector2Matrix (Vector2 point)
         {
-            float x = Mathf.Round(point.X * 100) / 100F;
-            float y = Mathf.Round(point.Y * 100) / 100F;
+            float x = Mathf.Round(point.x * 100) / 100F;
+            float y = Mathf.Round(point.y * 100) / 100F;
             return new Matrix4x4
             (
                 x, 0, 0, 0,
