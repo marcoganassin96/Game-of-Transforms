@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f821547c36252e4eb72ad4bffd89c8f, type: 3}
   m_Name: Polygon Graphics Settings
   m_EditorClassIdentifier: 
-  animationSpeed: 0
+  animationSpeed: 1
+  graphicalPointPrefab: {fileID: 1846686163725487896, guid: 4a930268857b79642ae20590864e1843,
+    type: 3}

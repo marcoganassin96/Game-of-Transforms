@@ -1,5 +1,6 @@
 ﻿using GameOfTransforms.Events;
 using GameOfTransforms.Transformation.Polygon;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using Matrix4x4 = System.Numerics.Matrix4x4;
@@ -16,18 +17,20 @@ namespace GameOfTransforms.Transformation.Transformator
         {
             PartialMatrix partialMatrix = transformatorEventData.TransformationMatrix.PartialMatrix;
             float quantity = transformatorEventData.TransformationMatrix.Quantity;
+            
+            Points2LogicCoordinates points2logicCoordinates = polygonGraphicsData.Points2LogicCoordinates;
 
             float c = 0F;
             for (c = 0F; c + polygonGraphicsSettings.AnimationSpeed < quantity; c += polygonGraphicsSettings.AnimationSpeed)
             {
-                foreach (Transform point in polygonGraphicsData.Points)
+                foreach (KeyValuePair<Transform, Vector2> point2logicCoordinate in points2logicCoordinates)
                 {
-                    point.position = Multiply(partialMatrix(c), point.position);
+                    point2logicCoordinate.Key.position = Multiply(partialMatrix(c), point2logicCoordinate.Value);
                 }
             }
-            foreach (Transform point in polygonGraphicsData.Points)
+            foreach (KeyValuePair<Transform, Vector2> point2logicCoordinate in points2logicCoordinates)
             {
-                point.position = Multiply(partialMatrix(quantity - c), point.position);
+                point2logicCoordinate.Key.position = Multiply(partialMatrix(quantity - c), point2logicCoordinate.Value);
             }
         }
         

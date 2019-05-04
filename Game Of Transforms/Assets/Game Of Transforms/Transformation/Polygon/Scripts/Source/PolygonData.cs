@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-using Vector2 = System.Numerics.Vector2;
 
 namespace GameOfTransforms.Transformation.Polygon
 {
