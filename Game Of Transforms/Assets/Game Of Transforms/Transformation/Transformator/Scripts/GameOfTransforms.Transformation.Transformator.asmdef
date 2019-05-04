@@ -4,7 +4,8 @@
         "GameOfTransforms.Transformation",
         "GameOfTransforms.Transformation.Polygon",
         "GameOfTransforms.Events",
-        "Zenject"
+        "Zenject",
+        "RotatoryHeart.SerializableDictionary"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
