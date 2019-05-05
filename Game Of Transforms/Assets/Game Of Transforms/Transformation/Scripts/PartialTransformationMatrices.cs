@@ -91,7 +91,7 @@ namespace GameOfTransforms.Transformation
         public static PartialMatrix HorizontalReflection { get; } = delegate (float c)
         {
             return new Matrix4x4(
-                -1, 0, 0, 0,
+                c, 0, 0, 0,
                 0, 1, 0, 0,
                 0, 0, 1, 0,
                 0, 0, 0, 1
@@ -102,7 +102,7 @@ namespace GameOfTransforms.Transformation
         {
             return new Matrix4x4(
                 1, 0, 0, 0,
-                0, -1, 0, 0,
+                0, c, 0, 0,
                 0, 0, 1, 0,
                 0, 0, 0, 1
             );
@@ -111,8 +111,8 @@ namespace GameOfTransforms.Transformation
         public static PartialMatrix OriginReflection { get; } = delegate (float c)
         {
             return new Matrix4x4(
-                -1, 0, 0, 0,
-                0, -1, 0, 0,
+                c, 0, 0, 0,
+                0, c, 0, 0,
                 0, 0, 1, 0,
                 0, 0, 0, 1
             );

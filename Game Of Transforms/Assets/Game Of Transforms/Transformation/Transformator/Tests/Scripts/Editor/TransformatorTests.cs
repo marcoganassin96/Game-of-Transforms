@@ -157,7 +157,7 @@ namespace GameOfTransforms.Transformation.Transformator.Tests
                 new OnPolygonTransformationArgs
                 (
                     ArbitraryCoordinates,
-                    Transformation.Reflection, Direction.X,
+                    Transformation.Reflection, Direction.X, -1F,
                     GetPolygonDataMock(new List<Vector2>
                     {
                         new Vector2 (-4, 0),
@@ -170,7 +170,7 @@ namespace GameOfTransforms.Transformation.Transformator.Tests
                 new OnPolygonTransformationArgs
                 (
                     ArbitraryCoordinates,
-                    Transformation.Reflection, Direction.Y,
+                    Transformation.Reflection, Direction.Y, -1F,
                     GetPolygonDataMock(new List<Vector2>
                     {
                         new Vector2 (4, 0),
@@ -183,7 +183,7 @@ namespace GameOfTransforms.Transformation.Transformator.Tests
                 new OnPolygonTransformationArgs
                 (
                     ArbitraryCoordinates,
-                    Transformation.Reflection, Direction.O,
+                    Transformation.Reflection, Direction.O, -1F,
                     GetPolygonDataMock(new List<Vector2>
                     {
                         new Vector2 (-4, 0),
@@ -228,15 +228,6 @@ namespace GameOfTransforms.Transformation.Transformator.Tests
                     Transformation = transformation;
                     Direction = direction;
                     Quantity = quantity;
-                    ExpectedResult = expectedResult;
-                }
-
-                internal OnPolygonTransformationArgs (List<Vector2> coordinates, Transformation transformation, Direction direction, IPolygonData expectedResult)
-                {
-                    Coordinates = coordinates;
-                    Transformation = transformation;
-                    Direction = direction;
-                    Quantity = 0;
                     ExpectedResult = expectedResult;
                 }
 
