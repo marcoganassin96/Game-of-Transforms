@@ -15,6 +15,7 @@ namespace GameOfTransforms.Transformation.Transformator
         [Inject] private IPolygonGraphicsData polygonGraphicsData = default;
         [Inject] private IPolygonGraphicsSettings polygonGraphicsSettings = default;
         [Inject] private IOnTransformationData transformatorEventData = default;
+        [Inject] private ITransformationSettings transformationSettings = default;
         [Inject] private ICartesianPlaneData cartesianPlaneData = default;
 
         private float animationSpeed = default;
@@ -45,11 +46,12 @@ namespace GameOfTransforms.Transformation.Transformator
 
             Points2LogicCoordinates points2logicCoordinates = polygonGraphicsData.Points2LogicCoordinates;
 
-            float c = 0F;
+            float identityElement = transformationSettings.Trasformation2IdentityElement[transformation];
+            float c = identityElement;
 
-            if (quantity >= 0F)
+            if (quantity >= identityElement)
             {
-                for (c = 0F; c + Time.deltaTime * animationSpeed < quantity; c += Time.deltaTime * animationSpeed)
+                for (c = identityElement; c + Time.deltaTime * animationSpeed < quantity; c += Time.deltaTime * animationSpeed)
                 {
                     foreach (KeyValuePair<Transform, Vector2> point2logicCoordinate in points2logicCoordinates)
                     {
@@ -60,7 +62,7 @@ namespace GameOfTransforms.Transformation.Transformator
             }
             else
             {
-                for (c = 0F; c - Time.deltaTime * animationSpeed > quantity; c -= Time.deltaTime * animationSpeed)
+                for (c = identityElement; c - Time.deltaTime * animationSpeed > quantity; c -= Time.deltaTime * animationSpeed)
                 {
                     foreach (KeyValuePair<Transform, Vector2> point2logicCoordinate in points2logicCoordinates)
                     {
