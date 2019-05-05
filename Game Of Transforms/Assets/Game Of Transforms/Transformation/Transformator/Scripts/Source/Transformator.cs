@@ -13,7 +13,11 @@ namespace GameOfTransforms.Transformation.Transformator
 
         public void OnTransformation ()
         {
-            Matrix4x4 matrix = transformatorEventData.TransformationMatrix.PartialMatrix(transformatorEventData.TransformationMatrix.Quantity);
+            Transformation transformation = transformatorEventData.Transformation;
+            Direction direction = transformatorEventData.Direction;
+            PartialMatrix partialMatrix = PartialTransformationMatrices.Get(transformation, direction);
+            float quantity = transformatorEventData.Quantity;
+            Matrix4x4 matrix = PartialTransformationMatrices.Get(transformation, direction)(quantity);
             for (int i = 0; i < polygonData.Points.Count; ++i)
             {
                 polygonData.Points[i] = Multiply(matrix, polygonData.Points[i]);

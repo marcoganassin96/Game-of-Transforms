@@ -20,7 +20,6 @@ namespace GameOfTransforms.Transformation.Transformator.Tests
                 polygonData.Points.Returns(points);
                 return polygonData;
             }
-            protected static PartialTransformationMatrices ptm = new PartialTransformationMatrices();
         }
 
         internal class _0_The_Transformator : TransformatorUnitTestsBase
@@ -36,7 +35,7 @@ namespace GameOfTransforms.Transformation.Transformator.Tests
 
                 Container.Bind<IOnTransformationData>().To<OnTransformationData>().AsCached();
                 IOnTransformationData onTransformationData = Container.Resolve<IOnTransformationData>();
-                onTransformationData.TransformationMatrix = new TransformationMatrix(ptm[args.Transformation, args.Direction], args.Quantity);
+                onTransformationData.SetTransformationData(args.Transformation, args.Direction, args.Quantity);
 
                 Container.Bind<IPolygonData>().To<PolygonData>().AsCached();
                 IPolygonData polygonData = Container.Resolve<IPolygonData>();

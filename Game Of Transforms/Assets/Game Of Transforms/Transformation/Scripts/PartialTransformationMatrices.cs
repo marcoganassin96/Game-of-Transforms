@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace GameOfTransforms.Transformation
 {
-    public class PartialTransformationMatrices
+    public static class PartialTransformationMatrices
     {
         #region Partial Matrices
 
@@ -122,7 +122,7 @@ namespace GameOfTransforms.Transformation
 
         #endregion
 
-        private Dictionary<Transformation, Dictionary<Direction, PartialMatrix>> Matrices { get; } =
+        private static Dictionary<Transformation, Dictionary<Direction, PartialMatrix>> Matrices { get; } =
             new Dictionary<Transformation, Dictionary<Direction, PartialMatrix>>
             {
                 {
@@ -160,12 +160,9 @@ namespace GameOfTransforms.Transformation
                 }
             };
 
-        public PartialMatrix this[Transformation transformation, Direction direction]
+        public static PartialMatrix Get(Transformation transformation, Direction direction)
         {
-            get
-            {
-                return Matrices[transformation][direction];
-            }
+            return Matrices[transformation][direction];
         }
     }
 }

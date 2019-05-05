@@ -15,8 +15,10 @@ namespace GameOfTransforms.Transformation.Transformator
 
         public void OnTransformation ()
         {
-            PartialMatrix partialMatrix = transformatorEventData.TransformationMatrix.PartialMatrix;
-            float quantity = transformatorEventData.TransformationMatrix.Quantity;
+            Transformation transformation = transformatorEventData.Transformation;
+            Direction direction = transformatorEventData.Direction;
+            PartialMatrix partialMatrix = PartialTransformationMatrices.Get(transformation, direction);
+            float quantity = transformatorEventData.Quantity;
             
             Points2LogicCoordinates points2logicCoordinates = polygonGraphicsData.Points2LogicCoordinates;
 
