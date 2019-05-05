@@ -15,6 +15,7 @@ namespace GameOfTransforms.Transformation.Transformator
 
         public override void InstallBindings ()
         {
+            Container.Bind<ITransformator>().To<Transformator>().AsCached();
             Container.Bind<IOnTransformationData>().FromInstance(onTransformationData).AsCached();
             Container.Bind<IPolygonData>().FromInstance(polygonData).AsCached();
             Container.Bind<IPolygonGraphicsData>().FromInstance(polygonGraphicsData).AsCached();
