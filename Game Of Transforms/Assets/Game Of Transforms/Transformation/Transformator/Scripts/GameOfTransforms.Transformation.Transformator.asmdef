@@ -3,6 +3,7 @@
     "references": [
         "GameOfTransforms.Transformation",
         "GameOfTransforms.Transformation.Polygon",
+        "GameOfTransforms.CartesianPlane",
         "GameOfTransforms.Events",
         "Zenject",
         "RotatoryHeart.SerializableDictionary"
