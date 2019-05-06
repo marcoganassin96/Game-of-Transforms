@@ -1,6 +1,8 @@
 {
     "name": "GameOfTransforms.Transformation",
-    "references": [],
+    "references": [
+        "RotatoryHeart.SerializableDictionary"
+    ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],

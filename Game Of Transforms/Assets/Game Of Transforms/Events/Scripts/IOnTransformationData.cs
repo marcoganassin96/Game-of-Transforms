@@ -4,6 +4,10 @@ namespace GameOfTransforms.Events
 {
     public interface IOnTransformationData
     {
-        TransformationMatrix TransformationMatrix { get; set; }
+        Transformation.Transformation Transformation { get; }
+        Direction Direction { get; }
+        float Quantity { get; }
+
+        void SetTransformationData (Transformation.Transformation transformation, Direction direction, float quantity);
     }
 }

@@ -1,0 +1,19 @@
+{
+    "name": "GameOfTransforms.Transformation.Transformator",
+    "references": [
+        "GameOfTransforms.Transformation",
+        "GameOfTransforms.Transformation.Polygon",
+        "GameOfTransforms.CartesianPlane",
+        "GameOfTransforms.Events",
+        "Zenject",
+        "RotatoryHeart.SerializableDictionary"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

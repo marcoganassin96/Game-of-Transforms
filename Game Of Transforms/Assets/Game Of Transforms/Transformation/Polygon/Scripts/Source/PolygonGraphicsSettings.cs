@@ -7,5 +7,8 @@ namespace GameOfTransforms.Transformation.Polygon
     {
         [SerializeField] private float animationSpeed = default;
         public float AnimationSpeed => animationSpeed;
+
+        [SerializeField] private GameObject graphicalPointPrefab = default;
+        public GameObject GraphicalPointPrefab => graphicalPointPrefab;
     }
 }

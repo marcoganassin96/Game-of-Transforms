@@ -1,0 +1,18 @@
+{
+    "name": "GameOfTransforms.Transformation.Transformator.Tests.Graphics",
+    "references": [
+        "GameOfTransforms.Transformation",
+        "GameOfTransforms.Transformation.Transformator",
+        "GameOfTransforms.Transformation.Polygon",
+        "GameOfTransforms.Events",
+        "Zenject"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

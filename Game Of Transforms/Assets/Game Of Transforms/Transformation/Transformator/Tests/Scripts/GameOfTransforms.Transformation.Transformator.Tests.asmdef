@@ -1,0 +1,24 @@
+{
+    "name": "GameOfTransforms.Transformation.Transformator.Tests",
+    "references": [
+        "Zenject-TestFramework",
+        "Zenject",
+        "GameOfTransforms.Transformation",
+        "GameOfTransforms.Transformation.Transformator",
+        "GameOfTransforms.Transformation.Polygon",
+        "GameOfTransforms.Events",
+        "Core.Args"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
