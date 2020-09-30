@@ -6,7 +6,7 @@ using Zenject;
 namespace GameOfTransforms.Transformation.Transformator
 {
     [CreateAssetMenu(fileName = "Transformator Installer", menuName = "Game Of Transforms/Transformation/Transformator/Transformator Installer")]
-    internal class TransformatorInstaller : ScriptableObjectInstaller<TransformatorInstaller>
+    internal class TransformatorInstaller : MonoInstaller
     {
         [SerializeField] private OnTransformationData onTransformationData = default;
         [SerializeField] private OnNewPolygonData onNewPolygonData = default;
@@ -18,7 +18,7 @@ namespace GameOfTransforms.Transformation.Transformator
         public override void InstallBindings ()
         {
             Container.Bind<ITransformator>().To<Transformator>().AsCached();
-            Container.Bind<IOnTransformationData>().FromInstance(onTransformationData).AsCached();
+            Container.Bind<IOnTransformationData>().FromInstance(onTransformationData).AsSingle();
             Container.Bind<IOnNewPolygonData>().FromInstance(onNewPolygonData).AsCached();
             Container.QueueForInject(onNewPolygonData);
             Container.Bind<IPolygonData>().FromInstance(polygonData).AsCached();

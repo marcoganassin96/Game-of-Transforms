@@ -18,8 +18,15 @@ namespace GameOfTransforms.Transformation.Transformator.Tests.Graphics
         private void Awake ()
         {
             polygonGraphicsData.OnNewPolygon();
-            onTransformatorEventData.SetTransformationData(transformation, direction, quantity);
-            graphicsTransformator.OnTransformation();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                onTransformatorEventData.SetTransformationData(transformation, direction, quantity);
+                graphicsTransformator.OnTransformation(transformation, direction, quantity);
+            }
         }
     }
 }

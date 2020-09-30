@@ -1,8 +1,7 @@
-﻿using GameOfTransforms.CartesianPlane;
-using GameOfTransforms.Events;
-using GameOfTransforms.Transformation.Polygon;
+﻿using GameOfTransforms.Transformation.Polygon;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 using Matrix4x4 = System.Numerics.Matrix4x4;
@@ -12,46 +11,41 @@ namespace GameOfTransforms.Transformation.Transformator
     internal class GraphicsTransformator : MonoBehaviour
     {
         [Inject] private ITransformator transformator = default;
+        [Inject] private IPolygonData polygonData = default;
         [Inject] private IPolygonGraphicsData polygonGraphicsData = default;
         [Inject] private IPolygonGraphicsSettings polygonGraphicsSettings = default;
-        [Inject] private IOnTransformationData transformatorEventData = default;
         [Inject] private ITransformationSettings transformationSettings = default;
-        [Inject] private ICartesianPlaneData cartesianPlaneData = default;
+        [Inject] private PolygonGraphicsUtils polygonGraphicsUtils = default;
 
-        private float animationSpeed = default;
         private Vector3 origin = default;
 
         private void Awake ()
         {
-            animationSpeed = polygonGraphicsSettings.AnimationSpeed;
-            origin = cartesianPlaneData.Origin;
             Points2LogicCoordinates points2LogicCoordinates = polygonGraphicsData.Points2LogicCoordinates;
             foreach (var point2LogicCoordinate in points2LogicCoordinates)
             {
-                point2LogicCoordinate.Key.position = Logic2GraphicsCoordinate(point2LogicCoordinate.Value);
+                point2LogicCoordinate.Key.position = polygonGraphicsUtils.Logic2GraphicsCoordinate(point2LogicCoordinate.Value);
             }
         }
 
-        internal void OnTransformation ()
+        internal void OnTransformation(Transformation transformation, Direction direction, float quantity)
         {
-            StartCoroutine(OnTransformationCoroutine());
+            StartCoroutine(OnTransformationCoroutine(transformation, direction, quantity));
         }
 
-        private IEnumerator OnTransformationCoroutine ()
+        private IEnumerator OnTransformationCoroutine(Transformation transformation, Direction direction, float quantity)
         {
-            Transformation transformation = transformatorEventData.Transformation;
-            Direction direction = transformatorEventData.Direction;
             PartialMatrix partialMatrix = PartialTransformationMatrices.Get(transformation, direction);
-            float quantity = transformatorEventData.Quantity;
 
             Points2LogicCoordinates points2logicCoordinates = polygonGraphicsData.Points2LogicCoordinates;
 
             float identityElement = transformationSettings.Trasformation2IdentityElement[transformation];
-            float c = identityElement;
 
-            if (quantity >= identityElement)
+            float animationSpeed = polygonGraphicsSettings.AnimationSpeed(transformation);
+
+            if(quantity >= identityElement)
             {
-                for (c = identityElement; c + Time.deltaTime * animationSpeed < quantity; c += Time.deltaTime * animationSpeed)
+                for (float c = identityElement; c + Time.deltaTime * animationSpeed < quantity; c += Time.deltaTime * animationSpeed)
                 {
                     foreach (KeyValuePair<Transform, Vector2> point2logicCoordinate in points2logicCoordinates)
                     {
@@ -62,7 +56,7 @@ namespace GameOfTransforms.Transformation.Transformator
             }
             else
             {
-                for (c = identityElement; c - Time.deltaTime * animationSpeed > quantity; c -= Time.deltaTime * animationSpeed)
+                for (float c = identityElement; c - Time.deltaTime * animationSpeed > quantity; c -= Time.deltaTime * animationSpeed)
                 {
                     foreach (KeyValuePair<Transform, Vector2> point2logicCoordinate in points2logicCoordinates)
                     {
@@ -71,9 +65,16 @@ namespace GameOfTransforms.Transformation.Transformator
                     yield return null;
                 }
             }
-            foreach (KeyValuePair<Transform, Vector2> point2originalCoordinate in points2logicCoordinates)
+
+            //update points2logicCoordinates
+            Transform[] points = points2logicCoordinates.Keys.ToArray();
+            int pointsNum = points.Length; ;
+            for (int i = 0; i < pointsNum; ++i)
             {
-                point2originalCoordinate.Key.position = Multiply(partialMatrix(quantity), point2originalCoordinate.Value);
+                Transform point = points[i];
+                Vector2 updatedLogicCoordinate = polygonData.Points[i];
+                points2logicCoordinates[point] = updatedLogicCoordinate;
+                point.position = polygonGraphicsUtils.Logic2GraphicsCoordinate(updatedLogicCoordinate);
             }
         }
 
@@ -81,12 +82,7 @@ namespace GameOfTransforms.Transformation.Transformator
 
         private Vector3 Multiply (Matrix4x4 matrix, Vector2 logicCoordinate)
         {
-            return Logic2GraphicsCoordinate(transformator.Multiply(matrix, logicCoordinate));
-        }
-
-        private Vector3 Logic2GraphicsCoordinate (Vector2 logicCoordinate)
-        {
-            return (Vector3)logicCoordinate + origin;
+            return polygonGraphicsUtils.Logic2GraphicsCoordinate(transformator.Multiply(matrix, logicCoordinate));
         }
 
         #endregion

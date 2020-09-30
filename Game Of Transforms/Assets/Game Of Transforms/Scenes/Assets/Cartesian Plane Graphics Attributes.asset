@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7161a3b7a4631e842ae66f70059ad060, type: 3}
+  m_Name: Cartesian Plane Graphics Attributes
+  m_EditorClassIdentifier: 
+  cartesianAxisMaterial: {fileID: 2100000, guid: 8df67e0f710e02d4193eee57fbe025d2,
+    type: 2}
+  cartesianAxisWidth: 0.25
+  linesOffset: 1
+  cartesianLinesMaterial: {fileID: 2100000, guid: c002771f9bb774c42b82e22213b63877,
+    type: 2}
+  cartesianLinesWidth: 0.05
+  labelPrefab: {fileID: 4467099607491526508, guid: 632e970ac6fa3634086edb177e9813ae,
+    type: 3}
+  labelOffset: 3
+  labelDistance: 0.6

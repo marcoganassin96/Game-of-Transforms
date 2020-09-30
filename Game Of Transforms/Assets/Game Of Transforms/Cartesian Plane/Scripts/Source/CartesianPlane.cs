@@ -6,7 +6,7 @@ using Zenject;
 namespace GameOfTransforms.CartesianPlane
 {
     [Serializable]
-    internal class CartesianPlaneMonoBehaviour : MonoBehaviour, ICartesianPlaneMonoBehaviour
+    internal class CartesianPlane : MonoBehaviour, ICartesianPlaneMonoBehaviour
     {
         #region Implements ICartesianPlaneMonoBehaviour
 

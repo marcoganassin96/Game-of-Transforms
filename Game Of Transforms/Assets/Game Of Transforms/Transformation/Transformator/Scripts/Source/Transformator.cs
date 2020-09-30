@@ -1,5 +1,4 @@
-﻿using GameOfTransforms.Events;
-using GameOfTransforms.Transformation.Polygon;
+﻿using GameOfTransforms.Transformation.Polygon;
 using UnityEngine;
 using Zenject;
 using Matrix4x4 = System.Numerics.Matrix4x4;
@@ -9,14 +8,9 @@ namespace GameOfTransforms.Transformation.Transformator
     public class Transformator : ITransformator
     {
         [Inject] private IPolygonData polygonData = default;
-        [Inject] private IOnTransformationData transformatorEventData = default;
 
-        public void OnTransformation ()
+        public void OnTransformation (Transformation transformation, Direction direction, float quantity)
         {
-            Transformation transformation = transformatorEventData.Transformation;
-            Direction direction = transformatorEventData.Direction;
-            PartialMatrix partialMatrix = PartialTransformationMatrices.Get(transformation, direction);
-            float quantity = transformatorEventData.Quantity;
             Matrix4x4 matrix = PartialTransformationMatrices.Get(transformation, direction)(quantity);
             for (int i = 0; i < polygonData.Points.Count; ++i)
             {

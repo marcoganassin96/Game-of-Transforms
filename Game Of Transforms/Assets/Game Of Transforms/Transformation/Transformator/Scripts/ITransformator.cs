@@ -5,7 +5,7 @@ namespace GameOfTransforms.Transformation.Transformator
 {
     public interface ITransformator
     {
-        void OnTransformation ();
+        void OnTransformation(Transformation transformation, Direction direction, float quantity);
         Vector2 Multiply (Matrix4x4 matrix, Vector2 point);
     }
 }

@@ -3,7 +3,9 @@
     "references": [
         "GameOfTransforms.Events",
         "Zenject",
-        "RotatoryHeart.SerializableDictionary"
+        "RotatoryHeart.SerializableDictionary",
+        "GameOfTransforms.CartesianPlane",
+        "GameOfTransforms.Transformation"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

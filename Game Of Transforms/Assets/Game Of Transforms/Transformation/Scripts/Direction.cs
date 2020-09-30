@@ -1,6 +1,8 @@
-﻿namespace GameOfTransforms.Transformation
+﻿using System;
+
+namespace GameOfTransforms.Transformation
 {
-    public enum Direction
+    [Serializable] public enum Direction
     {
         X, Y, O
     }

@@ -44,7 +44,7 @@ namespace GameOfTransforms.Transformation.Transformator.Tests
 
                 Container.Bind<ITransformator>().To<Transformator>().AsCached();
                 ITransformator transformator = Container.Resolve<ITransformator>();
-                transformator.OnTransformation();
+                transformator.OnTransformation(onTransformationData.Transformation, onTransformationData.Direction, onTransformationData.Quantity);
 
                 Assert.AreEqual(args.ExpectedResult.Points, polygonData.Points);
             }

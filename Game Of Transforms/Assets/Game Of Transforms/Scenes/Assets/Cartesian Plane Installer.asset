@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bc7d8af80bf8394c9d48cd27995299b, type: 3}
-  m_Name: Polygon Graphics Data
+  m_Script: {fileID: 11500000, guid: f6c6ae2a60522084894e3e35cc14e614, type: 3}
+  m_Name: Cartesian Plane Installer
   m_EditorClassIdentifier: 
-  points: []
+  graphicsAttributes: {fileID: 11400000, guid: 0d34046011fb26843b25f08672009c66, type: 2}
+  data: {fileID: 11400000, guid: 66e4e0d21b9621e4d9d75e71ae1ed2df, type: 2}

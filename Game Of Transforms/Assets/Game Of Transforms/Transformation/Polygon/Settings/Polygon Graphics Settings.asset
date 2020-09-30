@@ -12,6 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f821547c36252e4eb72ad4bffd89c8f, type: 3}
   m_Name: Polygon Graphics Settings
   m_EditorClassIdentifier: 
-  animationSpeed: 1
   graphicalPointPrefab: {fileID: 1846686163725487896, guid: 4a930268857b79642ae20590864e1843,
     type: 3}
+  transformationToAnimationSpeed:
+    reorderableList:
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
+      isExpanded: 1
+      label:
+        m_Text: Keys
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 1
+    _keyValues: 01000000000000000200000003000000
+    _keys: 01000000000000000200000003000000
+    _values:
+    - 50
+    - 2
+    - 2
+    - 4

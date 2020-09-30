@@ -1,6 +1,8 @@
-﻿namespace GameOfTransforms.Transformation
+﻿using System;
+
+namespace GameOfTransforms.Transformation
 {
-    public enum Transformation
+    [Serializable] public enum Transformation
     {
         Translation, Rotation, Scaling, Reflection
     }
