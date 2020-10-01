@@ -14,7 +14,6 @@ namespace GameOfTransforms.Transformation.Polygon
 
         public void OnNewPolygon ()
         {
-            Debug.Log("new Polygon");
             points2LogicCoordinates = new Points2LogicCoordinates();
             char label = 'A';
             foreach (Vector2 coordinate in polygonData.Points)

@@ -1,0 +1,15 @@
+{
+    "name": "GameOfTransforms.GameFlow",
+    "references": [
+        "Zenject",
+        "Core.GameEvents"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": []
+}

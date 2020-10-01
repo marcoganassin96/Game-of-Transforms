@@ -7,7 +7,7 @@ namespace GameOfTransforms.Transformation.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private GameEvent OnTransformationGameEvent = default;
+        [SerializeField] private GameEvent OnTransformationStartedGameEvent = default;
         [Inject] private IOnTransformationData transformatorEventData = default;
 
         private Transformation transformation = Transformation.Translation;
@@ -83,7 +83,7 @@ namespace GameOfTransforms.Transformation.Player
                         break;
                 }
 
-                OnTransformationGameEvent?.Raise();
+                OnTransformationStartedGameEvent?.Raise();
             }
             else
             {

@@ -6,7 +6,9 @@
         "GameOfTransforms.CartesianPlane",
         "GameOfTransforms.Events",
         "Zenject",
-        "RotatoryHeart.SerializableDictionary"
+        "RotatoryHeart.SerializableDictionary",
+        "GameOfTransforms.GameFlow",
+        "Core.GameEvents"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

@@ -13,7 +13,7 @@ namespace GameOfTransforms.Transformation.Polygon
 
         [Inject] private IOnNewPolygonData onNewPolygonData = default;
         
-        public void OnNewPolygon ()
+        public void OnNewPolygon()
         {
             points = onNewPolygonData.Points;
         }

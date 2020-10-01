@@ -1,4 +1,7 @@
-﻿using GameOfTransforms.Transformation.Polygon;
+﻿using Core.GameEvents;
+using GameOfTransforms.GameFlow;
+using GameOfTransforms.Transformation.Polygon;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using Matrix4x4 = System.Numerics.Matrix4x4;
@@ -9,12 +12,27 @@ namespace GameOfTransforms.Transformation.Transformator
     {
         [Inject] private IPolygonData polygonData = default;
 
+        [Inject] private GameFlowData gameFlowData = default;
+
+        [Inject(Id = "PositionReached")] private GameEvent PositionReached = default;
+
+        private bool positionReached = default;
+
         public void OnTransformation (Transformation transformation, Direction direction, float quantity)
         {
             Matrix4x4 matrix = PartialTransformationMatrices.Get(transformation, direction)(quantity);
+
+            positionReached = true;
+            List<Vector2> winningPointsPositions  = gameFlowData.WinningPointsPositions;
+
             for (int i = 0; i < polygonData.Points.Count; ++i)
             {
                 polygonData.Points[i] = Multiply(matrix, polygonData.Points[i]);
+                if (polygonData.Points[i] != winningPointsPositions[i])
+                {
+                    positionReached = false;
+                }
+                if (positionReached) PositionReached?.Raise();
             }
         }
 

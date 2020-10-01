@@ -2,57 +2,60 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TransformationsUIManager : MonoBehaviour
+namespace GameOfTransforms.Transformation.UI
 {
-    private Color normalColor = default;
-    private Color pressedColor = default;
-
-    [SerializeField] private List<Button> transformationsButtons = new List<Button>();
-    Button currentTransformationButton = null;
-
-    [SerializeField] private List<Button> directionsButtons = new List<Button>();
-    Button currentDirectionButton = null;
-
-    [SerializeField] Button reflectionButton = default;
-    [SerializeField] InputField value = default;
-
-    private void Start()
+    internal class TransformationsUIManager : MonoBehaviour
     {
-        normalColor = Color.white - (
-            (Color.white - transformationsButtons[0].image.color) +
-            (Color.white - transformationsButtons[0].colors.normalColor)
-        );
-        pressedColor = Color.white - (
-            (Color.white - transformationsButtons[0].image.color) +
-            (Color.white - transformationsButtons[0].colors.pressedColor)
-        );
+        private Color normalColor = default;
+        private Color pressedColor = default;
 
-        foreach (Button transformationButton in transformationsButtons)
+        [SerializeField] private List<Button> transformationsButtons = new List<Button>();
+        Button currentTransformationButton = null;
+
+        [SerializeField] private List<Button> directionsButtons = new List<Button>();
+        Button currentDirectionButton = null;
+
+        [SerializeField] Button reflectionButton = default;
+        [SerializeField] InputField value = default;
+
+        private void Start()
         {
-            transformationButton.onClick.AddListener(delegate { OnTransformationButtonClicked(transformationButton); });
+            normalColor = Color.white - (
+                (Color.white - transformationsButtons[0].image.color) +
+                (Color.white - transformationsButtons[0].colors.normalColor)
+            );
+            pressedColor = Color.white - (
+                (Color.white - transformationsButtons[0].image.color) +
+                (Color.white - transformationsButtons[0].colors.pressedColor)
+            );
+
+            foreach (Button transformationButton in transformationsButtons)
+            {
+                transformationButton.onClick.AddListener(delegate { OnTransformationButtonClicked(transformationButton); });
+            }
+
+            foreach (Button directionButton in directionsButtons)
+            {
+                directionButton.onClick.AddListener(delegate { OnDirectionButtonClicked(directionButton); });
+            }
+
+            reflectionButton.onClick.AddListener(delegate { value.text = "-1"; });
         }
 
-        foreach (Button directionButton in directionsButtons)
+        private void OnTransformationButtonClicked(Button transformationButton)
         {
-            directionButton.onClick.AddListener(delegate { OnDirectionButtonClicked(directionButton); });
+            if (currentTransformationButton != null)
+                currentTransformationButton.image.color = normalColor;
+            currentTransformationButton = transformationButton;
+            currentTransformationButton.image.color = pressedColor;
         }
-        
-        reflectionButton.onClick.AddListener(delegate { value.text = "-1"; });
-    }
 
-    private void OnTransformationButtonClicked(Button transformationButton)
-    {
-        if (currentTransformationButton != null)
-            currentTransformationButton.image.color = normalColor;
-        currentTransformationButton = transformationButton;
-        currentTransformationButton.image.color = pressedColor;
-    }
-
-    private void OnDirectionButtonClicked(Button directionButton)
-    {
-        if (currentDirectionButton != null)
-            currentDirectionButton.image.color = normalColor;
-        currentDirectionButton = directionButton;
-        currentDirectionButton.image.color = pressedColor;
+        private void OnDirectionButtonClicked(Button directionButton)
+        {
+            if (currentDirectionButton != null)
+                currentDirectionButton.image.color = normalColor;
+            currentDirectionButton = directionButton;
+            currentDirectionButton.image.color = pressedColor;
+        }
     }
 }

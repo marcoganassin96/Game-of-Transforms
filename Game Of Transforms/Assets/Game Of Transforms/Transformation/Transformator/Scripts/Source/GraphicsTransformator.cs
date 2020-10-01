@@ -1,4 +1,5 @@
-﻿using GameOfTransforms.Transformation.Polygon;
+﻿using Core.GameEvents;
+using GameOfTransforms.Transformation.Polygon;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace GameOfTransforms.Transformation.Transformator
 {
     internal class GraphicsTransformator : MonoBehaviour
     {
+        [SerializeField] private GameEvent OnTransformationFinished = default;
+
         [Inject] private ITransformator transformator = default;
         [Inject] private IPolygonData polygonData = default;
         [Inject] private IPolygonGraphicsData polygonGraphicsData = default;
@@ -76,6 +79,7 @@ namespace GameOfTransforms.Transformation.Transformator
                 points2logicCoordinates[point] = updatedLogicCoordinate;
                 point.position = polygonGraphicsUtils.Logic2GraphicsCoordinate(updatedLogicCoordinate);
             }
+            OnTransformationFinished?.Raise();
         }
 
         #region Graphics Transformator Utilities         

@@ -1,4 +1,5 @@
-﻿using GameOfTransforms.Events;
+﻿using Core.GameEvents;
+using GameOfTransforms.Events;
 using UnityEngine;
 using Zenject;
 
@@ -6,11 +7,12 @@ namespace GameOfTransforms.Transformation.Transformator
 {
     internal class TransformatorsManager : MonoBehaviour
     {
-        [Inject] ITransformator transformator = default;
         [SerializeField] GraphicsTransformator graphicsTransformator = default;
+
+        [Inject] private ITransformator transformator = default;
         [Inject] private IOnTransformationData transformatorEventData = default;
 
-        public void OnTransformation()
+        public void OnTransformationStarted()
         {
             Transformation transformation = transformatorEventData.Transformation;
             Direction direction = transformatorEventData.Direction;

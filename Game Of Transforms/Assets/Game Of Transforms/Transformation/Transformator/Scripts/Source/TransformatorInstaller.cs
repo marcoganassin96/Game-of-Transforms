@@ -1,3 +1,4 @@
+using Core.GameEvents;
 using GameOfTransforms.Events;
 using GameOfTransforms.Transformation.Polygon;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace GameOfTransforms.Transformation.Transformator
         [SerializeField] private PolygonGraphicsSettings polygonGraphicsSettings = default;
         [SerializeField] private TransformationSettings transformationSettings = default;
 
+        [SerializeField] private GameEvent PositionReached = default;
+
         public override void InstallBindings ()
         {
             Container.Bind<ITransformator>().To<Transformator>().AsCached();
@@ -28,6 +31,8 @@ namespace GameOfTransforms.Transformation.Transformator
             Container.Bind<IPolygonGraphicsSettings>().FromInstance(polygonGraphicsSettings).AsCached();
             Container.QueueForInject(polygonGraphicsSettings);
             Container.Bind<ITransformationSettings>().FromInstance(transformationSettings).AsCached();
+
+            Container.Bind<GameEvent>().WithId("PositionReached").FromInstance(PositionReached).WhenInjectedInto<Transformator>();
         }
     }
 }
